@@ -7,13 +7,9 @@ export default createGlobalStyle`
 
   body {
     font-family: 'Roboto', sans-serif;
+    color: #222222;
     margin: 0;
-  }
-
-  html, body {
-    position: fixed;
     width: 100%;
     height: 100%;
-    overflow: hidden;
   }
 `

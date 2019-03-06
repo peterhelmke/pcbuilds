@@ -1,14 +1,15 @@
+import PropTypes from 'prop-types'
 import React from 'react'
 import styled from 'styled-components'
-import SamplePCImage from './images/phanteks-p300-bk-temperedglass.jpg'
-import BookmarkStar from './images/bookmark-star.svg'
+import { FaRegStar, FaStar } from 'react-icons/fa'
 
 const StyledCard = styled.section`
   display: grid;
   padding: 25px;
   height: 100vh;
-  max-width: 375px;
+  
   max-height: 517px;
+  background: linear-gradient(to bottom, #FFFFFF, #FFFFFF, #F9F9F9);
 `
 
 const PCBuildTitleContainer = styled.div`
@@ -27,11 +28,7 @@ const BookmarkStarContainer = styled.div`
   display: flex;
   align-items: flex-start;
   justify-content: flex-end;
-`
-
-const BookmarkStarImage = styled.img`
-  height: 25px;
-  width: 25px;
+  font-size: 25px;
 `
 
 const PCBuildSubtitle = styled.h3`
@@ -40,9 +37,15 @@ const PCBuildSubtitle = styled.h3`
   font-size: 16px;
   font-weight: lighter;
 `
-
-const PCBuildImage = styled.img`
+const PCBuildImageContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin-top: 10px;
+  width: 325px;
+  height: 210px;
+`
+const PCBuildImage = styled.img`
   max-width: 325px;
   max-height: 210px;
 `
@@ -54,8 +57,8 @@ const KeyFactsList = styled.ul`
 `
 
 const BadgeRow = styled.div`
-display: flex;
-justify-content: flex-end;
+  display: flex;
+  justify-content: flex-end;
 `
 
 const TotalBadge = styled.div`
@@ -68,31 +71,70 @@ const TotalBadge = styled.div`
   width: 100px;
   height: 30px;
   margin-top: 10px;
-  color: white;
+  color: #F1F1F1;
   border-radius: 5px;
 `
 
-export default function Card() {
+Card.propTypes = {
+  title: PropTypes.string,
+  subtitle: PropTypes.string,
+  image: PropTypes.string,
+  manufactureritem1: PropTypes.string,
+  item1: PropTypes.string,
+  manufactureritem2: PropTypes.string,
+  item2: PropTypes.string,
+  manufactureritem3: PropTypes.string,
+  item3: PropTypes.string,
+  manufactureritem4: PropTypes.string,
+  item4: PropTypes.string,
+  total: PropTypes.string,
+  category: PropTypes.string,
+  bookmarked: PropTypes.bool,
+  onBookmark: PropTypes.func,
+
+}
+
+Card.defaultProps = {
+  title: 'Title',
+  subtitle: 'Subtitle',
+  image: 'http://via.placeholder.com/325x210/',
+  manufactureritem1: 'Manufacturer1',
+  item1: 'Item1',
+  manufactureritem2: 'Manufacturer2',
+  item2: 'Item2',
+  manufactureritem3: 'Manufacturer3',
+  item3: 'Item3',
+  manufactureritem4: 'Manufacturer4',
+  item4: 'Item4',
+  total: 'XXX'
+}
+
+export default function Card({ title, bookmarked, onBookmark, subtitle, image, manufactureritem1, item1, manufactureritem2, item2, manufactureritem3, item3, manufactureritem4, item4, total}) {
 
   return (
     <div css="scroll-snap-align: start;">
       <StyledCard>
         <PCBuildTitleContainer>
-          <PCBuildTitle>Apex Gaming Build</PCBuildTitle>
-          <BookmarkStarContainer>
-            <BookmarkStarImage src={BookmarkStar} alt="Bookmark"/>
+          <PCBuildTitle>{ title }</PCBuildTitle>
+          <BookmarkStarContainer onClick={() => onBookmark(title)}>
+            {bookmarked ? 
+              <FaStar color="#330086" /> : 
+              <FaRegStar color="#330086" /> 
+            }
           </BookmarkStarContainer>
         </PCBuildTitleContainer>
-        <PCBuildSubtitle>Featured Build</PCBuildSubtitle>
-        <PCBuildImage src={SamplePCImage} alt="Phanteks P300 BK TG"/>
+        <PCBuildSubtitle>{ subtitle }</PCBuildSubtitle>
+        <PCBuildImageContainer>
+          <PCBuildImage src={ image }/>
+        </PCBuildImageContainer>
         <KeyFactsList>
-          <li><strong>AMD</strong> Ryzen 5 2600X</li>
-          <li><strong>nvidia</strong> GeForce RTX 2060</li>
-          <li><strong>Phanteks</strong> Eclipse P300 Tempered Glass</li>
-          <li><strong>GeIL</strong> EVO SPEAR 16 GB (2 x 8 GB)</li>
+        <li><strong>{ manufactureritem1 }</strong> { item1 }</li>
+        <li><strong>{ manufactureritem2 }</strong> { item2 }</li>
+        <li><strong>{ manufactureritem3 }</strong> { item3 }</li>
+        <li><strong>{ manufactureritem4 }</strong> { item4 }</li>
         </KeyFactsList>
         <BadgeRow>
-          <TotalBadge><strong>Total</strong>&nbsp;899€</TotalBadge>
+          <TotalBadge><strong>Total</strong>&nbsp;{Math.round( total )}€</TotalBadge>
         </BadgeRow>
       </StyledCard>
     </div>
