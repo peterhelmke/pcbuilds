@@ -13,17 +13,15 @@ const HeaderTitleContainer = styled(NavLink)`
   align-items: center;
   justify-content: center;
   text-decoration: none;
+  font-family: 'Oswald', sans-serif;
+  font-size: 28px;
 `
 
 const HeaderTitleWhite = styled.div`
-  font-family: 'Oswald', sans-serif;
-  font-size: 28px;
   color: #f1f1f1;
 `
 
 const HeaderTitleYellow = styled.div`
-  font-family: 'Oswald', sans-serif;
-  font-size: 28px;
   color: #ffde00;
 `
 
