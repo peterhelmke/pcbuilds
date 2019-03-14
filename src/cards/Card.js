@@ -2,26 +2,27 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import styled from 'styled-components'
 import { FaRegStar, FaStar } from 'react-icons/fa'
+import { uid } from 'react-uid'
+import CardTitle from './CardTitle'
 
 const StyledCard = styled.section`
-  display: grid;
-  padding: 25px;
-  height: 100vh;
-  
-  max-height: 517px;
-  background: linear-gradient(to bottom, #FFFFFF, #FFFFFF, #F9F9F9);
+  padding: 0 25px 25px 25px;
+  min-width: 325px;
+  height: 830px;
+  background: linear-gradient(to bottom, #ffffff, #ffffff, #fbfbfb);
+  border-bottom: solid 1px;
+  border-color: #f1f1f1;
+  scroll-snap-align: start;
 `
 
-const PCBuildTitleContainer = styled.div`
+const PcBuildTitleContainer = styled.div`
   display: grid;
-  grid-template-columns: 4fr 1fr;
-`
-
-const PCBuildTitle = styled.h2`
-  margin: 0;
-  color: #330086;
-  font-weight: normal;
-  font-size: 20px;
+  grid-template-columns: 1fr auto;
+  position: sticky;
+  top: 0;
+  margin: 0 -25px 0 -25px;
+  padding: 15px 25px 15px 25px;
+  background: #ffffff;
 `
 
 const BookmarkStarContainer = styled.div`
@@ -29,114 +30,181 @@ const BookmarkStarContainer = styled.div`
   align-items: flex-start;
   justify-content: flex-end;
   font-size: 25px;
+  cursor: pointer;
 `
 
-const PCBuildSubtitle = styled.h3`
-  margin: 0;
-  margin-top: 10px;
+const PcBuildSubtitle = styled.h3`
+  margin: 10px 0 0 0;
   font-size: 16px;
   font-weight: lighter;
 `
-const PCBuildImageContainer = styled.div`
+
+const PcBuildImageContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 10px;
-  width: 325px;
-  height: 210px;
 `
-const PCBuildImage = styled.img`
+
+const PcBuildImage = styled.img`
   max-width: 325px;
   max-height: 210px;
 `
 
-const KeyFactsList = styled.ul`
-  margin-top: 10px;
-  list-style: none;
-  padding: 0;
+const KeyFacts = styled.section`
+  scroll-snap-align: start;
+  margin-top: 15px;
+  line-height: 1.5;
+  height: 50px;
 `
 
-const BadgeRow = styled.div`
+const PartListTitle = styled.h3`
+  margin: 15px 0 0 0;
+  font-size: 18px;
+  font-weight: bold;
+`
+
+const Part = styled.div`
+  display: grid;
+  margin-top: 10px;
+  grid-template-columns: auto 65px;
+  grid-template-rows: 30px;
+  font-size: 14px;
+  align-items: center;
+  border-bottom: solid 1px;
+  border-color: #f1f1f1;
+`
+
+const PartPrice = styled.button`
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 25px;
+  width: 65px;
+  font-size: 14px;
+  background: transparent;
+  border: solid 1px;
+  border-color: #330086;
+  border-radius: 3px;
+  :hover {
+    background: #330086;
+    color: #f1f1f1;
+  }
+`
+
+const PartPriceLink = styled.a`
+  text-decoration: none;
+  color: #330086;
+`
+
+const PcBuildTotalRow = styled.div`
+  margin-top: 15px;
   display: flex;
   justify-content: flex-end;
 `
 
-const TotalBadge = styled.div`
+const PcBuildTotal = styled.button`
+  cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
-  right: 25px;
   font-size: 16px;
   background: #330086;
-  width: 100px;
+  width: 130px;
   height: 30px;
-  margin-top: 10px;
-  color: #F1F1F1;
+  color: #f1f1f1;
+  border: solid 1px;
   border-radius: 5px;
 `
 
 Card.propTypes = {
   title: PropTypes.string,
   subtitle: PropTypes.string,
+  keyFacts: PropTypes.string,
   image: PropTypes.string,
-  manufactureritem1: PropTypes.string,
-  item1: PropTypes.string,
-  manufactureritem2: PropTypes.string,
-  item2: PropTypes.string,
-  manufactureritem3: PropTypes.string,
-  item3: PropTypes.string,
-  manufactureritem4: PropTypes.string,
-  item4: PropTypes.string,
-  total: PropTypes.string,
+  parts: PropTypes.array,
   category: PropTypes.string,
   bookmarked: PropTypes.bool,
   onBookmark: PropTypes.func,
-
 }
 
 Card.defaultProps = {
   title: 'Title',
   subtitle: 'Subtitle',
   image: 'http://via.placeholder.com/325x210/',
-  manufactureritem1: 'Manufacturer1',
-  item1: 'Item1',
-  manufactureritem2: 'Manufacturer2',
-  item2: 'Item2',
-  manufactureritem3: 'Manufacturer3',
-  item3: 'Item3',
-  manufactureritem4: 'Manufacturer4',
-  item4: 'Item4',
-  total: 'XXX'
+  keyFacts: 'Key Facts',
 }
 
-export default function Card({ title, bookmarked, onBookmark, subtitle, image, manufactureritem1, item1, manufactureritem2, item2, manufactureritem3, item3, manufactureritem4, item4, total}) {
-
+export default function Card({
+  id,
+  title,
+  bookmarked,
+  onBookmark,
+  subtitle,
+  image,
+  keyFacts,
+  parts,
+}) {
   return (
-    <div css="scroll-snap-align: start;">
-      <StyledCard>
-        <PCBuildTitleContainer>
-          <PCBuildTitle>{ title }</PCBuildTitle>
-          <BookmarkStarContainer onClick={() => onBookmark(title)}>
-            {bookmarked ? 
-              <FaStar color="#330086" /> : 
-              <FaRegStar color="#330086" /> 
-            }
-          </BookmarkStarContainer>
-        </PCBuildTitleContainer>
-        <PCBuildSubtitle>{ subtitle }</PCBuildSubtitle>
-        <PCBuildImageContainer>
-          <PCBuildImage src={ image }/>
-        </PCBuildImageContainer>
-        <KeyFactsList>
-        <li><strong>{ manufactureritem1 }</strong> { item1 }</li>
-        <li><strong>{ manufactureritem2 }</strong> { item2 }</li>
-        <li><strong>{ manufactureritem3 }</strong> { item3 }</li>
-        <li><strong>{ manufactureritem4 }</strong> { item4 }</li>
-        </KeyFactsList>
-        <BadgeRow>
-          <TotalBadge><strong>Total</strong>&nbsp;{Math.round( total )}€</TotalBadge>
-        </BadgeRow>
-      </StyledCard>
-    </div>
+    <StyledCard>
+      <PcBuildTitleContainer>
+        <CardTitle title={title} />
+        <BookmarkStarContainer onClick={() => onBookmark(id)}>
+          {bookmarked ? (
+            <FaStar color="#330086" />
+          ) : (
+            <FaRegStar color="#330086" />
+          )}
+        </BookmarkStarContainer>
+      </PcBuildTitleContainer>
+      <PcBuildSubtitle>{subtitle}</PcBuildSubtitle>
+      <PcBuildImageContainer>
+        <PcBuildImage src={image} />
+      </PcBuildImageContainer>
+      <KeyFacts>{keyFacts}</KeyFacts>
+      <PartListTitle>Partlist</PartListTitle>
+      {parts.map(part => (
+        <Part key={uid(part)}>
+          <div>
+            <strong>{part.partManufacturer}</strong> {part.partName}
+          </div>
+          <PartPriceLink
+            href={part.partUrl}
+            target="_blank"
+            rel="noreferrer noopener">
+            <PartPrice>
+              {part.partPrice.toFixed(2).toLocaleString('de-DE')}€
+            </PartPrice>
+          </PartPriceLink>
+        </Part>
+      ))}
+      <PcBuildTotalRow>
+        <form
+          action="http://www.amazon.de/exec/obidos/dt/assoc/handle-buy-box"
+          method="POST"
+          target="_blank"
+          rel="noreferrer noopener">
+          <input type="hidden" name="tag_value" value="sirtechalot-21" />
+          {parts.map(part => (
+            <input
+              key={uid(part)}
+              type="hidden"
+              name={part.partAsin}
+              value="1"
+            />
+          ))}
+          <PcBuildTotal type="submit" name="submit.add-to-cart">
+            <strong>Total</strong>
+            &nbsp;
+            {parts
+              .reduce((a, b) => a + b.partPrice, 0)
+              .toFixed(2)
+              .toLocaleString('de-DE')}
+            €
+          </PcBuildTotal>
+        </form>
+      </PcBuildTotalRow>
+    </StyledCard>
   )
 }
