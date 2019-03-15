@@ -53,7 +53,15 @@ export default function Header() {
         <HeaderTitleYellow>IT</HeaderTitleYellow>
       </HeaderTitleContainer>
       <HeaderCategoryNav>
-        <HeaderCategoryLink exact to="/">
+        <HeaderCategoryLink
+          exact
+          to={
+            window.location.pathname === '/ascending'
+              ? '/ascending'
+              : window.location.pathname === '/descending'
+              ? '/descending'
+              : '/'
+          }>
           All
         </HeaderCategoryLink>
         <HeaderCategoryLink to="/gaming">Gaming</HeaderCategoryLink>

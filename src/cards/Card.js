@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 import styled from 'styled-components'
-import { FaRegStar, FaStar } from 'react-icons/fa'
+import { TiStarFullOutline, TiStarOutline } from 'react-icons/ti'
 import { uid } from 'react-uid'
 import CardTitle from './CardTitle'
 
@@ -84,6 +84,7 @@ const PartPrice = styled.button`
   width: 65px;
   font-size: 14px;
   background: transparent;
+  color: #330086;
   border: solid 1px;
   border-color: #330086;
   border-radius: 3px;
@@ -95,7 +96,6 @@ const PartPrice = styled.button`
 
 const PartPriceLink = styled.a`
   text-decoration: none;
-  color: #330086;
 `
 
 const PcBuildTotalRow = styled.div`
@@ -115,7 +115,12 @@ const PcBuildTotal = styled.button`
   height: 30px;
   color: #f1f1f1;
   border: solid 1px;
-  border-radius: 5px;
+  border-radius: 3px;
+  :hover {
+    background: transparent;
+    color: #330086;
+    border-color: #330086;
+  }
 `
 
 Card.propTypes = {
@@ -127,6 +132,7 @@ Card.propTypes = {
   category: PropTypes.string,
   bookmarked: PropTypes.bool,
   onBookmark: PropTypes.func,
+  total: PropTypes.func,
 }
 
 Card.defaultProps = {
@@ -137,7 +143,6 @@ Card.defaultProps = {
 }
 
 export default function Card({
-  id,
   title,
   bookmarked,
   onBookmark,
@@ -145,16 +150,17 @@ export default function Card({
   image,
   keyFacts,
   parts,
+  total,
 }) {
   return (
     <StyledCard>
       <PcBuildTitleContainer>
         <CardTitle title={title} />
-        <BookmarkStarContainer onClick={() => onBookmark(id)}>
+        <BookmarkStarContainer onClick={() => onBookmark(title)}>
           {bookmarked ? (
-            <FaStar color="#330086" />
+            <TiStarFullOutline color="#330086" />
           ) : (
-            <FaRegStar color="#330086" />
+            <TiStarOutline color="#330086" />
           )}
         </BookmarkStarContainer>
       </PcBuildTitleContainer>
@@ -197,14 +203,15 @@ export default function Card({
           <PcBuildTotal type="submit" name="submit.add-to-cart">
             <strong>Total</strong>
             &nbsp;
-            {parts
-              .reduce((a, b) => a + b.partPrice, 0)
-              .toFixed(2)
-              .toLocaleString('de-DE')}
-            €
+            {total()}€
           </PcBuildTotal>
         </form>
       </PcBuildTotalRow>
     </StyledCard>
   )
 }
+
+/* {parts
+.reduce((a, b) => a + b.partPrice, 0)
+.toFixed(2)
+.toLocaleString('de-DE')} */

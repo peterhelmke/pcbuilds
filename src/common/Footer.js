@@ -1,7 +1,12 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
-import { FaStar, FaChevronCircleUp, FaChevronCircleDown } from 'react-icons/fa'
+import {
+  TiStarFullOutline,
+  TiStarOutline,
+  TiArrowUpThick,
+  TiArrowDownThick,
+} from 'react-icons/ti'
 
 const FooterNav = styled.nav`
   display: grid;
@@ -10,7 +15,7 @@ const FooterNav = styled.nav`
   background: linear-gradient(to right, #11002c, #330086);
 `
 
-const FooterNavLink = styled(NavLink)`
+const FooterSortLink = styled(NavLink)`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -39,14 +44,68 @@ const FooterNavBookmark = styled(NavLink)`
 export default function Footer() {
   return (
     <FooterNav>
-      <FooterNavLink to="/ascending">
-        <FaChevronCircleUp />
-      </FooterNavLink>
-      <FooterNavLink to="/descending">
-        <FaChevronCircleDown />
-      </FooterNavLink>
+      <FooterSortLink
+        to={
+          window.location.pathname === '/'
+            ? '/ascending'
+            : window.location.pathname === '/gaming'
+            ? '/gaming/ascending'
+            : window.location.pathname === '/editing'
+            ? '/editing/ascending'
+            : window.location.pathname === '/office'
+            ? '/office/ascending'
+            : window.location.pathname === '/descending'
+            ? '/ascending'
+            : window.location.pathname === '/gaming/descending'
+            ? '/gaming/ascending'
+            : window.location.pathname === '/editing/descending'
+            ? '/editing/ascending'
+            : window.location.pathname === '/office/descending'
+            ? '/office/ascending'
+            : window.location.pathname === '/bookmarks'
+            ? '/bookmarks/ascending'
+            : window.location.pathname === '/bookmarks/descending'
+            ? '/bookmarks/ascending'
+            : window.location.pathname
+        }>
+        <TiArrowUpThick />
+      </FooterSortLink>
+      <FooterSortLink
+        to={
+          window.location.pathname === '/'
+            ? '/descending'
+            : window.location.pathname === '/gaming'
+            ? '/gaming/descending'
+            : window.location.pathname === '/editing'
+            ? '/editing/descending'
+            : window.location.pathname === '/office'
+            ? '/office/descending'
+            : window.location.pathname === '/ascending'
+            ? '/descending'
+            : window.location.pathname === '/gaming/ascending'
+            ? '/gaming/descending'
+            : window.location.pathname === '/editing/ascending'
+            ? '/editing/descending'
+            : window.location.pathname === '/office/ascending'
+            ? '/office/descending'
+            : window.location.pathname === '/bookmarks'
+            ? '/bookmarks/descending'
+            : window.location.pathname === '/bookmarks/ascending'
+            ? '/bookmarks/descending'
+            : window.location.pathname
+        }>
+        <TiArrowDownThick />
+      </FooterSortLink>
       <FooterNavBookmark to="/bookmarks">
-        <FaStar />
+        {window.location.pathname === '/bookmarks' ? (
+          <TiStarFullOutline />
+        ) : window.location.pathname === '/bookmarks/ascending' ? (
+          <TiStarFullOutline />
+        ) : window.location.pathname === '/bookmarks/descending' ? (
+          <TiStarFullOutline />
+        ) : (
+          <TiStarOutline />
+        )}
       </FooterNavBookmark>
     </FooterNav>
   )

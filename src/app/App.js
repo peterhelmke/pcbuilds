@@ -25,7 +25,7 @@ function App() {
     {
       title: 'Apex Gaming Build',
       subtitle: 'Featured Build',
-      image: 'images/phanteksp300tgbk.jpg',
+      image: '../images/phanteksp300tgbk.jpg',
       keyFacts:
         'A build capable of all modern titles up to WQHD-resolution and simultanous streaming.',
       parts: [
@@ -86,7 +86,9 @@ function App() {
           partAsin: 'asin.B06WV7Z1ZW',
         },
       ],
-      total: 2,
+      total: () => {
+        return cards[0].parts.reduce((a, b) => a + b.partPrice, 0)
+      },
       category: 'gaming',
       bookmarked: false,
     },
@@ -94,7 +96,7 @@ function App() {
     {
       title: 'AMD Workstation Build',
       subtitle: 'Edit like a Pro!',
-      image: 'images/fractaldesignmeshifyctg.jpg',
+      image: '../images/fractaldesignmeshifyctg.jpg',
       keyFacts: 'Commander Eilo am Start!',
       parts: [
         {
@@ -122,39 +124,41 @@ function App() {
           partManufacturer: 'Ballistix',
           partName: 'Sport LT BLS2K8G4D30BESBK 16GB (8GB x2)',
           partPrice: 100.68,
-          partUrl: 'https://amzn.to/2TBcmmL',
+          partUrl: 'https:amzn.to/2TBcmmL',
           partAsin: 'asin.B07HP87R9J',
         },
         {
           partManufacturer: 'ASRock',
           partName: 'B450 Pro4',
           partPrice: 82.99,
-          partUrl: 'https://amzn.to/2CdKz0X',
+          partUrl: 'https:amzn.to/2CdKz0X',
           partAsin: 'asin.B07FVYKJHR',
         },
         {
           partManufacturer: 'Cooler Master',
           partName: 'Hyper 212 Black',
           partPrice: 34.94,
-          partUrl: 'https://amzn.to/2Cg215a',
+          partUrl: 'https:amzn.to/2Cg215a',
           partAsin: 'asin.B07H9HJLG5',
         },
         {
           partManufacturer: 'SanDisk',
           partName: 'SSD PLUS 1TB',
           partPrice: 112.9,
-          partUrl: 'https://amzn.to/2XWlFMB',
+          partUrl: 'https:amzn.to/2XWlFMB',
           partAsin: 'asin.B07D998212',
         },
         {
           partManufacturer: 'Corsair',
           partName: 'TXM Gold 550W 80+ Gold',
           partPrice: 77.99,
-          partUrl: 'https://amzn.to/2O1rxjf',
+          partUrl: 'https:amzn.to/2O1rxjf',
           partAsin: 'asin.B06WV7Z1ZW',
         },
       ],
-      total: 3,
+      total: () => {
+        return cards[1].parts.reduce((a, b) => a + b.partPrice, 0)
+      },
       category: 'editing',
       bookmarked: false,
     },
@@ -162,74 +166,76 @@ function App() {
     {
       title: 'Office PC',
       subtitle: 'Bargain Build',
-      image: 'images/CoolerMasterMasterBoxE300L.jpg',
+      image: '../images/CoolerMasterMasterBoxE300L.jpg',
       keyFacts: 'Office SWAG',
       parts: [
         {
           partManufacturer: 'AMD',
           partName: 'Ryzen 5 2600X',
           partPrice: 196.89,
-          partUrl: 'https://amzn.to/2EXQxDI',
+          partUrl: 'https:amzn.to/2EXQxDI',
           partAsin: 'asin.B07B428V2L',
         },
         {
           partManufacturer: 'MSI',
           partName: 'GeForce RTX 2060 6GB Ventus OC',
           partPrice: 374.99,
-          partUrl: 'https://amzn.to/2Tzb5gc',
+          partUrl: 'https:amzn.to/2Tzb5gc',
           partAsin: 'asin.B07MJC8XKD',
         },
         {
           partManufacturer: 'Cooler Master',
           partName: 'Master Box E300L',
           partPrice: 34.99,
-          partUrl: 'https://amzn.to/2TyB3QR',
+          partUrl: 'https:amzn.to/2TyB3QR',
           partAsin: 'asin.B07C2KNP2Q',
         },
         {
           partManufacturer: 'Ballistix',
           partName: 'Sport LT BLS2K8G4D30BESBK 16GB (8GB x2)',
           partPrice: 100.68,
-          partUrl: 'https://amzn.to/2TBcmmL',
+          partUrl: 'https:amzn.to/2TBcmmL',
           partAsin: 'asin.B07HP87R9J',
         },
         {
           partManufacturer: 'ASRock',
           partName: 'B450 Pro4',
           partPrice: 82.99,
-          partUrl: 'https://amzn.to/2CdKz0X',
+          partUrl: 'https:amzn.to/2CdKz0X',
           partAsin: 'asin.B07FVYKJHR',
         },
         {
           partManufacturer: 'Cooler Master',
           partName: 'Hyper 212 Black',
           partPrice: 34.94,
-          partUrl: 'https://amzn.to/2Cg215a',
+          partUrl: 'https:amzn.to/2Cg215a',
           partAsin: 'asin.B07H9HJLG5',
         },
         {
           partManufacturer: 'SanDisk',
           partName: 'SSD PLUS 1TB',
           partPrice: 112.9,
-          partUrl: 'https://amzn.to/2XWlFMB',
+          partUrl: 'https:amzn.to/2XWlFMB',
           partAsin: 'asin.B07D998212',
         },
         {
           partManufacturer: 'Corsair',
           partName: 'TXM Gold 550W 80+ Gold',
           partPrice: 77.99,
-          partUrl: 'https://amzn.to/2O1rxjf',
+          partUrl: 'https:amzn.to/2O1rxjf',
           partAsin: 'asin.B06WV7Z1ZW',
         },
       ],
-      total: 1,
+      total: () => {
+        return cards[2].parts.reduce((a, b) => a + b.partPrice, 0)
+      },
       category: 'office',
       bookmarked: false,
     },
   ])
 
-  function bookmarkToggle(id) {
-    const card = cards.find(pcbuild => pcbuild.id === id)
+  function bookmarkToggle(title) {
+    const card = cards.find(pcbuild => pcbuild.title === title)
     const index = cards.indexOf(card)
     setCards([
       ...cards.slice(0, index),
@@ -251,6 +257,7 @@ function App() {
             )}
           />
           <Route
+            exact
             path="/gaming"
             render={() => (
               <CardsRender
@@ -260,6 +267,7 @@ function App() {
             )}
           />
           <Route
+            exact
             path="/editing"
             render={() => (
               <CardsRender
@@ -269,6 +277,7 @@ function App() {
             )}
           />
           <Route
+            exact
             path="/office"
             render={() => (
               <CardsRender
@@ -278,6 +287,7 @@ function App() {
             )}
           />
           <Route
+            exact
             path="/ascending"
             render={() => (
               <CardsRender
@@ -289,6 +299,44 @@ function App() {
             )}
           />
           <Route
+            exact
+            path="/gaming/ascending"
+            render={() => (
+              <CardsRender
+                bookmarkToggle={bookmarkToggle}
+                cards={cards
+                  .filter(card => card.category === 'gaming')
+                  .sort((a, b) => parseFloat(a.total) - parseFloat(b.total))}
+              />
+            )}
+          />
+          <Route
+            exact
+            path="/editing/ascending"
+            render={() => (
+              <CardsRender
+                bookmarkToggle={bookmarkToggle}
+                cards={cards
+                  .filter(card => card.category === 'editing')
+                  .sort((a, b) => parseFloat(a.total) - parseFloat(b.total))}
+              />
+            )}
+          />
+          <Route
+            exact
+            path="/office/ascending"
+            render={() => (
+              <CardsRender
+                bookmarkToggle={bookmarkToggle}
+                cards={cards
+                  .filter(card => card.category === 'office')
+                  .sort((a, b) => parseFloat(a.total) - parseFloat(b.total))}
+              />
+            )}
+          />
+
+          <Route
+            exact
             path="/descending"
             render={() => (
               <CardsRender
@@ -300,11 +348,73 @@ function App() {
             )}
           />
           <Route
+            exact
+            path="/gaming/descending"
+            render={() => (
+              <CardsRender
+                bookmarkToggle={bookmarkToggle}
+                cards={cards
+                  .filter(card => card.category === 'gaming')
+                  .sort((a, b) => parseFloat(b.total) - parseFloat(a.total))}
+              />
+            )}
+          />
+          <Route
+            exact
+            path="/editing/descending"
+            render={() => (
+              <CardsRender
+                bookmarkToggle={bookmarkToggle}
+                cards={cards
+                  .filter(card => card.category === 'editing')
+                  .sort((a, b) => parseFloat(b.total) - parseFloat(a.total))}
+              />
+            )}
+          />
+          <Route
+            exact
+            path="/office/descending"
+            render={() => (
+              <CardsRender
+                bookmarkToggle={bookmarkToggle}
+                cards={cards
+                  .filter(card => card.category === 'office')
+                  .sort((a, b) => parseFloat(b.total) - parseFloat(a.total))}
+              />
+            )}
+          />
+
+          <Route
+            exact
             path="/bookmarks"
             render={() => (
               <CardsRender
                 bookmarkToggle={bookmarkToggle}
                 cards={cards.filter(card => card.bookmarked)}
+              />
+            )}
+          />
+          <Route
+            exact
+            path="/bookmarks/ascending"
+            render={() => (
+              <CardsRender
+                bookmarkToggle={bookmarkToggle}
+                cards={cards
+                  .filter(card => card.bookmarked)
+                  .sort((a, b) => parseFloat(a.total) - parseFloat(b.total))}
+              />
+            )}
+          />
+          <Route
+            exact
+            path="/bookmarks/descending"
+            render={() => (
+              <CardsRender
+                bookmarkToggle={bookmarkToggle}
+                cards={cards
+                  .filter(card => card.bookmarked)
+                  .sort((a, b) => parseFloat(b.total) - parseFloat(a.total))}
               />
             )}
           />

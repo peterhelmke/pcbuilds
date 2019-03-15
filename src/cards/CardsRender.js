@@ -15,6 +15,7 @@ export default function CardsRender({ cards, bookmarkToggle }) {
           keyFacts={card.keyFacts}
           parts={card.parts}
           bookmarked={card.bookmarked}
+          total={card.total}
         />
       ))}
     </React.Fragment>
