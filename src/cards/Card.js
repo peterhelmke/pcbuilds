@@ -13,6 +13,7 @@ const StyledCard = styled.section`
   border-bottom: solid 1px;
   border-color: #f1f1f1;
   scroll-snap-align: start;
+  border-radius: 0 0 25px 25px;
 `
 
 const PcBuildTitleContainer = styled.div`
@@ -23,6 +24,7 @@ const PcBuildTitleContainer = styled.div`
   margin: 0 -25px 0 -25px;
   padding: 15px 25px 15px 25px;
   background: #ffffff;
+  border-radius: 0 0 25px 25px;
 `
 
 const BookmarkStarContainer = styled.div`
@@ -67,27 +69,29 @@ const PartListTitle = styled.h3`
 const Part = styled.div`
   display: grid;
   margin-top: 10px;
-  grid-template-columns: auto 65px;
+  grid-template-columns: auto 70px;
   grid-template-rows: 30px;
   font-size: 14px;
   align-items: center;
   border-bottom: solid 1px;
   border-color: #f1f1f1;
+  background: linear-gradient(to bottom, #ffffff, #fbfbfb);
 `
 
 const PartPrice = styled.button`
+  margin-bottom: 5px;
   cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 25px;
-  width: 65px;
+  height: 27px;
+  width: 70px;
   font-size: 14px;
   background: transparent;
   color: #330086;
   border: solid 1px;
   border-color: #330086;
-  border-radius: 3px;
+  border-radius: 10px;
   :hover {
     background: #330086;
     color: #f1f1f1;
@@ -109,13 +113,13 @@ const PcBuildTotal = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 16px;
+  font-size: 14px;
   background: #330086;
-  width: 130px;
-  height: 30px;
+  width: 140px;
+  height: 32px;
   color: #f1f1f1;
   border: solid 1px;
-  border-radius: 3px;
+  border-radius: 10px;
   :hover {
     background: transparent;
     color: #330086;
@@ -132,7 +136,6 @@ Card.propTypes = {
   category: PropTypes.string,
   bookmarked: PropTypes.bool,
   onBookmark: PropTypes.func,
-  total: PropTypes.func,
 }
 
 Card.defaultProps = {
@@ -180,7 +183,11 @@ export default function Card({
             target="_blank"
             rel="noreferrer noopener">
             <PartPrice>
-              {part.partPrice.toFixed(2).toLocaleString('de-DE')}€
+              {part.partPrice.toLocaleString('de-DE', {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2,
+              })}
+              €
             </PartPrice>
           </PartPriceLink>
         </Part>
@@ -203,15 +210,10 @@ export default function Card({
           <PcBuildTotal type="submit" name="submit.add-to-cart">
             <strong>Total</strong>
             &nbsp;
-            {total()}€
+            {total}€
           </PcBuildTotal>
         </form>
       </PcBuildTotalRow>
     </StyledCard>
   )
 }
-
-/* {parts
-.reduce((a, b) => a + b.partPrice, 0)
-.toFixed(2)
-.toLocaleString('de-DE')} */

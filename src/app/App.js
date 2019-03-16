@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import CardContainer from '../cards/CardContainer'
 import GlobalStyle from './GlobalStyle'
@@ -86,9 +86,7 @@ function App() {
           partAsin: 'asin.B06WV7Z1ZW',
         },
       ],
-      total: () => {
-        return cards[0].parts.reduce((a, b) => a + b.partPrice, 0)
-      },
+
       category: 'gaming',
       bookmarked: false,
     },
@@ -156,9 +154,7 @@ function App() {
           partAsin: 'asin.B06WV7Z1ZW',
         },
       ],
-      total: () => {
-        return cards[1].parts.reduce((a, b) => a + b.partPrice, 0)
-      },
+
       category: 'editing',
       bookmarked: false,
     },
@@ -226,13 +222,29 @@ function App() {
           partAsin: 'asin.B06WV7Z1ZW',
         },
       ],
-      total: () => {
-        return cards[2].parts.reduce((a, b) => a + b.partPrice, 0)
-      },
+
       category: 'office',
       bookmarked: false,
     },
   ])
+
+  function calcTotal() {
+    const cardsTotal = cards.map(card =>
+      Object.assign(card, {
+        total: card.parts
+          .reduce((a, b) => a + b.partPrice, 0)
+          .toLocaleString('de-DE', {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2,
+          }),
+      })
+    )
+    setCards(cardsTotal)
+  }
+
+  useEffect(() => {
+    calcTotal()
+  }, [])
 
   function bookmarkToggle(title) {
     const card = cards.find(pcbuild => pcbuild.title === title)

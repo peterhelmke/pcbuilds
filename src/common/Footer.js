@@ -13,6 +13,7 @@ const FooterNav = styled.nav`
   grid-template-columns: 1fr 1fr 1fr;
   height: 50px;
   background: linear-gradient(to right, #11002c, #330086);
+  border-radius: 2px 2px 0 0;
 `
 
 const FooterSortLink = styled(NavLink)`
@@ -22,6 +23,9 @@ const FooterSortLink = styled(NavLink)`
   color: rgba(255, 255, 255, 0.5);
   font-size: 25px;
   background: rgba(192, 192, 192, 0.12);
+  :hover  {
+    color: #f1f1f1;
+  }
   &.active {
     background: transparent;
     color: #f1f1f1;
@@ -35,6 +39,9 @@ const FooterNavBookmark = styled(NavLink)`
   color: rgba(255, 255, 255, 0.5);
   font-size: 25px;
   background: rgba(192, 192, 192, 0.12);
+  :hover  {
+    color: #f1f1f1;
+  }
   &.active {
     background: transparent;
     color: #f1f1f1;
