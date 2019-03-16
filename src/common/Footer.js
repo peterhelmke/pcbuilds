@@ -13,7 +13,6 @@ const FooterNav = styled.nav`
   grid-template-columns: 1fr 1fr 1fr;
   height: 50px;
   background: linear-gradient(to right, #11002c, #330086);
-  border-radius: 2px 2px 0 0;
 `
 
 const FooterSortLink = styled(NavLink)`
