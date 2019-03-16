@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import CardContainer from '../cards/CardContainer'
 import GlobalStyle from './GlobalStyle'
@@ -25,7 +25,7 @@ function App() {
     {
       title: 'Apex Gaming Build',
       subtitle: 'Featured Build',
-      image: 'images/phanteksp300tgbk.jpg',
+      image: '../images/phanteksp300tgbk.jpg',
       keyFacts:
         'A build capable of all modern titles up to WQHD-resolution and simultanous streaming.',
       parts: [
@@ -86,7 +86,7 @@ function App() {
           partAsin: 'asin.B06WV7Z1ZW',
         },
       ],
-      total: 2,
+
       category: 'gaming',
       bookmarked: false,
     },
@@ -94,7 +94,7 @@ function App() {
     {
       title: 'AMD Workstation Build',
       subtitle: 'Edit like a Pro!',
-      image: 'images/fractaldesignmeshifyctg.jpg',
+      image: '../images/fractaldesignmeshifyctg.jpg',
       keyFacts: 'Commander Eilo am Start!',
       parts: [
         {
@@ -154,7 +154,7 @@ function App() {
           partAsin: 'asin.B06WV7Z1ZW',
         },
       ],
-      total: 3,
+
       category: 'editing',
       bookmarked: false,
     },
@@ -162,7 +162,7 @@ function App() {
     {
       title: 'Office PC',
       subtitle: 'Bargain Build',
-      image: 'images/CoolerMasterMasterBoxE300L.jpg',
+      image: '../images/CoolerMasterMasterBoxE300L.jpg',
       keyFacts: 'Office SWAG',
       parts: [
         {
@@ -222,14 +222,32 @@ function App() {
           partAsin: 'asin.B06WV7Z1ZW',
         },
       ],
-      total: 1,
+
       category: 'office',
       bookmarked: false,
     },
   ])
 
-  function bookmarkToggle(id) {
-    const card = cards.find(pcbuild => pcbuild.id === id)
+  function calcTotal() {
+    const cardsTotal = cards.map(card =>
+      Object.assign(card, {
+        total: card.parts
+          .reduce((a, b) => a + b.partPrice, 0)
+          .toLocaleString('de-DE', {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2,
+          }),
+      })
+    )
+    setCards(cardsTotal)
+  }
+
+  useEffect(() => {
+    calcTotal()
+  }, [])
+
+  function bookmarkToggle(title) {
+    const card = cards.find(pcbuild => pcbuild.title === title)
     const index = cards.indexOf(card)
     setCards([
       ...cards.slice(0, index),
@@ -251,6 +269,7 @@ function App() {
             )}
           />
           <Route
+            exact
             path="/gaming"
             render={() => (
               <CardsRender
@@ -260,6 +279,7 @@ function App() {
             )}
           />
           <Route
+            exact
             path="/editing"
             render={() => (
               <CardsRender
@@ -269,6 +289,7 @@ function App() {
             )}
           />
           <Route
+            exact
             path="/office"
             render={() => (
               <CardsRender
@@ -278,6 +299,7 @@ function App() {
             )}
           />
           <Route
+            exact
             path="/ascending"
             render={() => (
               <CardsRender
@@ -289,6 +311,44 @@ function App() {
             )}
           />
           <Route
+            exact
+            path="/gaming/ascending"
+            render={() => (
+              <CardsRender
+                bookmarkToggle={bookmarkToggle}
+                cards={cards
+                  .filter(card => card.category === 'gaming')
+                  .sort((a, b) => parseFloat(a.total) - parseFloat(b.total))}
+              />
+            )}
+          />
+          <Route
+            exact
+            path="/editing/ascending"
+            render={() => (
+              <CardsRender
+                bookmarkToggle={bookmarkToggle}
+                cards={cards
+                  .filter(card => card.category === 'editing')
+                  .sort((a, b) => parseFloat(a.total) - parseFloat(b.total))}
+              />
+            )}
+          />
+          <Route
+            exact
+            path="/office/ascending"
+            render={() => (
+              <CardsRender
+                bookmarkToggle={bookmarkToggle}
+                cards={cards
+                  .filter(card => card.category === 'office')
+                  .sort((a, b) => parseFloat(a.total) - parseFloat(b.total))}
+              />
+            )}
+          />
+
+          <Route
+            exact
             path="/descending"
             render={() => (
               <CardsRender
@@ -300,11 +360,73 @@ function App() {
             )}
           />
           <Route
+            exact
+            path="/gaming/descending"
+            render={() => (
+              <CardsRender
+                bookmarkToggle={bookmarkToggle}
+                cards={cards
+                  .filter(card => card.category === 'gaming')
+                  .sort((a, b) => parseFloat(b.total) - parseFloat(a.total))}
+              />
+            )}
+          />
+          <Route
+            exact
+            path="/editing/descending"
+            render={() => (
+              <CardsRender
+                bookmarkToggle={bookmarkToggle}
+                cards={cards
+                  .filter(card => card.category === 'editing')
+                  .sort((a, b) => parseFloat(b.total) - parseFloat(a.total))}
+              />
+            )}
+          />
+          <Route
+            exact
+            path="/office/descending"
+            render={() => (
+              <CardsRender
+                bookmarkToggle={bookmarkToggle}
+                cards={cards
+                  .filter(card => card.category === 'office')
+                  .sort((a, b) => parseFloat(b.total) - parseFloat(a.total))}
+              />
+            )}
+          />
+
+          <Route
+            exact
             path="/bookmarks"
             render={() => (
               <CardsRender
                 bookmarkToggle={bookmarkToggle}
                 cards={cards.filter(card => card.bookmarked)}
+              />
+            )}
+          />
+          <Route
+            exact
+            path="/bookmarks/ascending"
+            render={() => (
+              <CardsRender
+                bookmarkToggle={bookmarkToggle}
+                cards={cards
+                  .filter(card => card.bookmarked)
+                  .sort((a, b) => parseFloat(a.total) - parseFloat(b.total))}
+              />
+            )}
+          />
+          <Route
+            exact
+            path="/bookmarks/descending"
+            render={() => (
+              <CardsRender
+                bookmarkToggle={bookmarkToggle}
+                cards={cards
+                  .filter(card => card.bookmarked)
+                  .sort((a, b) => parseFloat(b.total) - parseFloat(a.total))}
               />
             )}
           />
