@@ -10,7 +10,7 @@ import {
 
 const FooterNav = styled.nav`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   height: 50px;
   background: linear-gradient(to right, #11002c, #330086);
 `

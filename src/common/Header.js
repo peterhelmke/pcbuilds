@@ -11,7 +11,7 @@ const StyledHeader = styled.header`
 
 const HeaderTitleContainer = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
 `
 
 const HeaderTitleWrapper = styled.div`
@@ -50,7 +50,7 @@ const SocialMedia = styled.div`
 
 const HeaderCategoryNav = styled.nav`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: repeat(4, 1fr);
 `
 
 const HeaderCategoryLink = styled(NavLink)`
