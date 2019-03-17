@@ -7,8 +7,6 @@ import CardTitle from './CardTitle'
 
 const StyledCard = styled.section`
   padding: 0 25px 25px 25px;
-  min-width: 325px;
-  height: 830px;
   background: linear-gradient(to bottom, #ffffff, #ffffff, #fbfbfb);
   border-bottom: solid 1px;
   border-color: #f1f1f1;
@@ -33,6 +31,24 @@ const BookmarkStarContainer = styled.div`
   justify-content: flex-end;
   font-size: 25px;
   cursor: pointer;
+`
+
+const PcBuildSubtitleContainer = styled.div`
+  display: grid;
+  grid-template-columns: auto 1fr;
+`
+
+const CategoryTag = styled.div`
+  display: flex;
+  margin: 5px 5px 5px 0;
+  height: 27px;
+  padding: 5px;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  background: #330086;
+  color: #f1f1f1;
+  border-radius: 10px;
 `
 
 const PcBuildSubtitle = styled.h3`
@@ -60,10 +76,39 @@ const KeyFacts = styled.section`
   height: 50px;
 `
 
-const PartListTitle = styled.h3`
-  margin: 15px 0 0 0;
-  font-size: 18px;
+const PcBuildTotalRow = styled.div`
+  justify-content: center;
+  align-items: center;
+  margin-top: 15px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: 30px;
+`
+
+const PartList = styled.h3`
+  margin: 0;
+  font-size: 16px;
   font-weight: bold;
+`
+
+const PcBuildTotal = styled.button`
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  background: #29b27b;
+  width: 120px;
+  height: 27px;
+  color: white;
+  border: solid 1px;
+  border-color: #29b27b;
+  border-radius: 10px;
+  :hover {
+    border-color: #330086;
+    background: #330086;
+    color: #f1f1f1;
+  }
 `
 
 const Part = styled.div`
@@ -102,31 +147,6 @@ const PartPriceLink = styled.a`
   text-decoration: none;
 `
 
-const PcBuildTotalRow = styled.div`
-  margin-top: 15px;
-  display: flex;
-  justify-content: flex-end;
-`
-
-const PcBuildTotal = styled.button`
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 14px;
-  background: #330086;
-  width: 140px;
-  height: 32px;
-  color: #f1f1f1;
-  border: solid 1px;
-  border-radius: 10px;
-  :hover {
-    background: transparent;
-    color: #330086;
-    border-color: #330086;
-  }
-`
-
 Card.propTypes = {
   title: PropTypes.string,
   subtitle: PropTypes.string,
@@ -147,6 +167,7 @@ Card.defaultProps = {
 
 export default function Card({
   title,
+  category,
   bookmarked,
   onBookmark,
   subtitle,
@@ -167,32 +188,16 @@ export default function Card({
           )}
         </BookmarkStarContainer>
       </PcBuildTitleContainer>
-      <PcBuildSubtitle>{subtitle}</PcBuildSubtitle>
+      <PcBuildSubtitleContainer>
+        <CategoryTag>{category} </CategoryTag>
+        <PcBuildSubtitle>{subtitle}</PcBuildSubtitle>
+      </PcBuildSubtitleContainer>
       <PcBuildImageContainer>
         <PcBuildImage src={image} />
       </PcBuildImageContainer>
       <KeyFacts>{keyFacts}</KeyFacts>
-      <PartListTitle>Partlist</PartListTitle>
-      {parts.map(part => (
-        <Part key={uid(part)}>
-          <div>
-            <strong>{part.partManufacturer}</strong> {part.partName}
-          </div>
-          <PartPriceLink
-            href={part.partUrl}
-            target="_blank"
-            rel="noreferrer noopener">
-            <PartPrice>
-              {part.partPrice.toLocaleString('de-DE', {
-                minimumFractionDigits: 2,
-                maximumFractionDigits: 2,
-              })}
-              €
-            </PartPrice>
-          </PartPriceLink>
-        </Part>
-      ))}
       <PcBuildTotalRow>
+        <PartList>Part List</PartList>
         <form
           action="http://www.amazon.de/exec/obidos/dt/assoc/handle-buy-box"
           method="POST"
@@ -214,6 +219,25 @@ export default function Card({
           </PcBuildTotal>
         </form>
       </PcBuildTotalRow>
+      {parts.map(part => (
+        <Part key={uid(part)}>
+          <div>
+            <strong>{part.partManufacturer}</strong> {part.partName}
+          </div>
+          <PartPriceLink
+            href={part.partUrl}
+            target="_blank"
+            rel="noreferrer noopener">
+            <PartPrice>
+              {part.partPrice.toLocaleString('de-DE', {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2,
+              })}
+              €
+            </PartPrice>
+          </PartPriceLink>
+        </Part>
+      ))}
     </StyledCard>
   )
 }

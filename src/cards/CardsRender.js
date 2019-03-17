@@ -10,6 +10,7 @@ export default function CardsRender({ cards, bookmarkToggle }) {
           key={uid(card)}
           title={card.title}
           onBookmark={bookmarkToggle}
+          category={card.category}
           subtitle={card.subtitle}
           image={card.image}
           keyFacts={card.keyFacts}
