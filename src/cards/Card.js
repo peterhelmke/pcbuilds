@@ -167,9 +167,9 @@ Card.defaultProps = {
 
 export default function Card({
   title,
-  category,
   bookmarked,
   onBookmark,
+  category,
   subtitle,
   image,
   keyFacts,
