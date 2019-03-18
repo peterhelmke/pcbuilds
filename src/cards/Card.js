@@ -8,6 +8,7 @@ import CardTitle from './CardTitle'
 const StyledCard = styled.section`
   padding: 0 25px 25px 25px;
   background: linear-gradient(to bottom, #ffffff, #ffffff, #fbfbfb);
+  min-width: 280px;
   border-bottom: solid 1px;
   border-color: #f1f1f1;
   scroll-snap-align: start;
@@ -167,9 +168,9 @@ Card.defaultProps = {
 
 export default function Card({
   title,
-  category,
   bookmarked,
   onBookmark,
+  category,
   subtitle,
   image,
   keyFacts,
