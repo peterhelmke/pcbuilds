@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import CardContainer from '../cards/CardContainer'
 import GlobalStyle from './GlobalStyle'
 import CardsRender from '../cards/CardsRender'
+import CardsRenderBookmarks from '../cards/CardsRenderBookmarks'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import Header from '../common/Header'
 import Footer from '../common/Footer'
@@ -146,7 +147,6 @@ function App() {
               />
             )}
           />
-
           <Route
             exact
             path="/descending"
@@ -195,12 +195,11 @@ function App() {
               />
             )}
           />
-
           <Route
             exact
             path="/bookmarks"
             render={() => (
-              <CardsRender
+              <CardsRenderBookmarks
                 bookmarkToggle={bookmarkToggle}
                 cards={cards.filter(card => card.bookmarked)}
               />
@@ -210,7 +209,7 @@ function App() {
             exact
             path="/bookmarks/ascending"
             render={() => (
-              <CardsRender
+              <CardsRenderBookmarks
                 bookmarkToggle={bookmarkToggle}
                 cards={cards
                   .filter(card => card.bookmarked)
@@ -222,7 +221,7 @@ function App() {
             exact
             path="/bookmarks/descending"
             render={() => (
-              <CardsRender
+              <CardsRenderBookmarks
                 bookmarkToggle={bookmarkToggle}
                 cards={cards
                   .filter(card => card.bookmarked)

@@ -22,6 +22,8 @@ const FooterSortLink = styled(NavLink)`
   color: rgba(255, 255, 255, 0.5);
   font-size: 25px;
   background: rgba(192, 192, 192, 0.12);
+  text-decoration: none;
+  font-weight: bold;
   :hover  {
     color: #f1f1f1;
   }
@@ -74,7 +76,7 @@ export default function Footer() {
             ? '/bookmarks/ascending'
             : window.location.pathname
         }>
-        <TiArrowUpThick />
+        €<TiArrowUpThick />
       </FooterSortLink>
       <FooterSortLink
         to={
@@ -100,7 +102,7 @@ export default function Footer() {
             ? '/bookmarks/descending'
             : window.location.pathname
         }>
-        <TiArrowDownThick />
+        €<TiArrowDownThick />
       </FooterSortLink>
       <FooterNavBookmark to="/bookmarks">
         {window.location.pathname === '/bookmarks' ? (

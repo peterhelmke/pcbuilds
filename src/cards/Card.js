@@ -1,7 +1,12 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 import styled from 'styled-components'
-import { TiStarFullOutline, TiStarOutline } from 'react-icons/ti'
+import {
+  TiStarFullOutline,
+  TiStarOutline,
+  TiFlash,
+  TiShoppingCart,
+} from 'react-icons/ti'
 import { uid } from 'react-uid'
 import CardTitle from './CardTitle'
 
@@ -17,13 +22,25 @@ const StyledCard = styled.section`
 
 const PcBuildTitleContainer = styled.div`
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: 1fr auto auto;
   position: sticky;
   top: 0;
   margin: 0 -25px 0 -25px;
   padding: 15px 25px 15px 25px;
   background: #ffffff;
   border-radius: 0 0 25px 25px;
+`
+const PerformanceIndicator = styled.div`
+  display: flex;
+  min-width: 40px;
+  padding-right: 5px;
+  align-items: center;
+  height: 27px;
+  color: crimson;
+  border: solid 1px;
+  border-color: transparent;
+  border-radius: 10px;
+  margin-right: 10px;
 `
 
 const BookmarkStarContainer = styled.div`
@@ -48,7 +65,7 @@ const CategoryTag = styled.div`
   align-items: center;
   font-size: 12px;
   background: #330086;
-  color: #f1f1f1;
+  color: white;
   border-radius: 10px;
 `
 
@@ -99,7 +116,7 @@ const PcBuildTotal = styled.button`
   align-items: center;
   font-size: 14px;
   background: #29b27b;
-  width: 120px;
+  width: 140px;
   height: 27px;
   color: white;
   border: solid 1px;
@@ -114,6 +131,7 @@ const PcBuildTotal = styled.button`
 
 const Part = styled.div`
   display: grid;
+  grid-gap: 5px;
   margin-top: 10px;
   grid-template-columns: auto 70px;
   grid-template-rows: 30px;
@@ -168,6 +186,7 @@ Card.defaultProps = {
 
 export default function Card({
   title,
+  performance,
   bookmarked,
   onBookmark,
   category,
@@ -181,6 +200,17 @@ export default function Card({
     <StyledCard>
       <PcBuildTitleContainer>
         <CardTitle title={title} />
+        <PerformanceIndicator
+          style={
+            performance >= 8
+              ? { borderColor: 'crimson', color: 'crimson' }
+              : { color: '#330086' } && performance <= 4
+              ? { color: '#afafaf' }
+              : { color: '#330086' }
+          }>
+          <TiFlash style={{ fontSize: '22px' }} />
+          <strong> {performance} </strong>
+        </PerformanceIndicator>
         <BookmarkStarContainer onClick={() => onBookmark(title)}>
           {bookmarked ? (
             <TiStarFullOutline color="#330086" />
@@ -213,7 +243,10 @@ export default function Card({
               value="1"
             />
           ))}
+
           <PcBuildTotal type="submit" name="submit.add-to-cart">
+            <TiShoppingCart />
+            &nbsp;
             <strong>Total</strong>
             &nbsp;
             {total}€

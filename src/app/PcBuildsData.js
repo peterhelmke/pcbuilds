@@ -2,6 +2,9 @@ export default function PcBuildsData() {
   return [
     {
       title: 'Apex Gaming Build',
+      performance: 7,
+      bookmarked: false,
+      category: 'gaming',
       subtitle: 'Featured Build',
       image: '../images/phanteksp300tgbk.jpg',
       keyFacts:
@@ -64,12 +67,13 @@ export default function PcBuildsData() {
           partAsin: 'asin.B06WV7Z1ZW',
         },
       ],
-      category: 'gaming',
-      bookmarked: false,
     },
 
     {
       title: 'AMD Workstation Build',
+      performance: 7.5,
+      bookmarked: false,
+      category: 'editing',
       subtitle: 'Edit like a Pro!',
       image: '../images/fractaldesignmeshifyctg.jpg',
       keyFacts: 'Edit edit edit edit edit',
@@ -131,12 +135,13 @@ export default function PcBuildsData() {
           partAsin: 'asin.B06WV7Z1ZW',
         },
       ],
-      category: 'editing',
-      bookmarked: false,
     },
 
     {
       title: 'Office PC',
+      performance: 3,
+      bookmarked: false,
+      category: 'office',
       subtitle: 'Bargain Build',
       image: '../images/CoolerMasterMasterBoxE300L.jpg',
       keyFacts: 'Office SWAG',
@@ -198,12 +203,13 @@ export default function PcBuildsData() {
           partAsin: 'asin.B06WV7Z1ZW',
         },
       ],
-      category: 'office',
-      bookmarked: false,
     },
 
     {
       title: 'Lian Li Gaming Build',
+      performance: 9,
+      bookmarked: false,
+      category: 'gaming',
       subtitle: 'Lian Li Placeholder',
       image: '../images/lianlipco11dxbk.jpg',
       keyFacts: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr',
@@ -265,12 +271,13 @@ export default function PcBuildsData() {
           partAsin: 'asin.B06WV7Z1ZW',
         },
       ],
-      category: 'gaming',
-      bookmarked: false,
     },
 
     {
-      title: 'Q300L Cheap Gaming Build',
+      title: 'Q300L Cheap Gaming',
+      performance: 4.5,
+      bookmarked: false,
+      category: 'gaming',
       subtitle: 'Cooler Master Placeholder',
       image: '../images/coolermasterq300l.jpg',
       keyFacts: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr',
@@ -332,11 +339,12 @@ export default function PcBuildsData() {
           partAsin: 'asin.B06WV7Z1ZW',
         },
       ],
-      category: 'gaming',
-      bookmarked: false,
     },
     {
       title: 'NZXT Workstation Build',
+      performance: 8.5,
+      bookmarked: false,
+      category: 'editing',
       subtitle: 'H700i Placeholder',
       image: '../images/nzxth700iw.jpg',
       keyFacts: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr',
@@ -398,8 +406,6 @@ export default function PcBuildsData() {
           partAsin: 'asin.B06WV7Z1ZW',
         },
       ],
-      category: 'editing',
-      bookmarked: false,
     },
   ]
 }

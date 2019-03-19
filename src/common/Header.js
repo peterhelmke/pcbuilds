@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom'
 import React from 'react'
 import styled from 'styled-components'
-import { TiSocialInstagram } from 'react-icons/ti'
+import { TiSocialInstagram, TiSocialYoutube } from 'react-icons/ti'
 
 const StyledHeader = styled.header`
   display: grid;
@@ -35,7 +35,6 @@ const HeaderTitleYellow = styled.div`
 
 const SocialMedia = styled.div`
   display: flex;
-  align-items: flex-start;
   justify-content: flex-end;
   font-size: 20px;
   padding: 13px;
@@ -86,10 +85,18 @@ export default function Header() {
         </HeaderTitleWrapper>
         <SocialMedia>
           <a
+            href="https://www.youtube.com/channel/UCAgEf4P53ezEZ2-RTlK1drg"
+            target="_blank"
+            rel="noopener noreferrer">
+            <TiSocialYoutube style={{ cursor: 'pointer' }} />
+          </a>
+          <a
             href="https://www.instagram.com/sirtechalot"
             target="_blank"
             rel="noopener noreferrer">
-            <TiSocialInstagram style={{ cursor: 'pointer' }} />
+            <TiSocialInstagram
+              style={{ marginLeft: '10px', cursor: 'pointer' }}
+            />
           </a>
         </SocialMedia>
       </HeaderTitleContainer>
