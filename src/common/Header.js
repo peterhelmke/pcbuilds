@@ -95,7 +95,7 @@ export default function Header() {
             target="_blank"
             rel="noopener noreferrer">
             <TiSocialInstagram
-              style={{ marginLeft: '10px', cursor: 'pointer' }}
+              style={{ marginLeft: '15px', cursor: 'pointer' }}
             />
           </a>
         </SocialMedia>
