@@ -53,6 +53,10 @@ const BookmarkStarContainer = styled.div`
   justify-content: flex-end;
   font-size: 25px;
   cursor: pointer;
+  color: #330086;
+  :hover {
+    color: #440086;
+  }
 `
 
 const PcBuildSubtitleContainer = styled.div`
@@ -87,6 +91,19 @@ const PcBuildImageContainer = styled.div`
   margin-top: 10px;
 `
 
+const CpuLogoContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+`
+
+const CpuGpu = styled.img`
+  max-width: 45px;
+  max-height: 45px;
+  margin: 8px;
+`
+
 const PcBuildImage = styled.img`
   max-width: 210px;
   max-height: 210px;
@@ -97,6 +114,9 @@ const SwipeIndicatorContainer = styled.div`
   justify-content: flex-end;
   color: #afafaf;
   font-size: 32px;
+  :hover {
+    color: #5f5f5f;
+  }
 `
 
 const KeyFacts = styled.section`
@@ -161,21 +181,23 @@ const PcBuildTotal = styled.button`
   justify-content: center;
   align-items: center;
   font-size: 14px;
-  background: #29b27b;
+
   width: 150px;
   height: 30px;
   color: white;
   border: solid 1px;
-  border-color: #29b27b;
+  border-color: #330086;
+  background: #330086;
   border-radius: 10px;
   :hover {
-    border-color: #330086;
-    background: #330086;
-    color: #f1f1f1;
+    border-color: #440086;
+    background: #440086;
   }
 `
 
-const SwipeContainer = styled.div``
+const SwipeContainer = styled.div`
+  min-height: 388px;
+`
 
 Card.propTypes = {
   title: PropTypes.string,
@@ -215,21 +237,21 @@ export default function Card({
         <CardTitle title={title} />
         <PerformanceIndicator
           style={
-            performance >= 8
-              ? { borderColor: 'crimson', color: 'crimson' }
-              : { color: '#330086' } && performance <= 4
-              ? { color: '#afafaf' }
-              : { color: '#330086' }
+            performance >= 9
+              ? { borderColor: '#330086', color: '#330086' }
+              : performance >= 8
+              ? { color: '#330086CC' }
+              : performance >= 6
+              ? { color: '#33008699' }
+              : performance >= 4
+              ? { color: '#33008666' }
+              : { color: '#3300864D' }
           }>
           <TiFlash style={{ fontSize: '22px' }} />
           <strong> {performance} </strong>
         </PerformanceIndicator>
         <BookmarkStarContainer onClick={() => onBookmark(title)}>
-          {bookmarked ? (
-            <TiStarFullOutline color="#330086" />
-          ) : (
-            <TiStarOutline color="#330086" />
-          )}
+          {bookmarked ? <TiStarFullOutline /> : <TiStarOutline />}
         </BookmarkStarContainer>
       </PcBuildTitleContainer>
       <SwipeableViews index={index} onChangeIndex={() => setIndex(0)}>
@@ -239,7 +261,23 @@ export default function Card({
             <PcBuildSubtitle>{subtitle}</PcBuildSubtitle>
           </PcBuildSubtitleContainer>
           <PcBuildImageContainer>
-            <div>CPU-ICON GPU-ICON</div>
+            <CpuLogoContainer>
+              {parts[0].partManufacturer === 'Intel' ? (
+                <CpuGpu src="../images/intel.svg" />
+              ) : (
+                <CpuGpu src="../images/amd.svg" />
+              )}
+              {parts[1].partName.toUpperCase().includes('GEFORCE') ? (
+                <CpuGpu src="../images/nvidia.svg" />
+              ) : (
+                ''
+              )}
+              {parts[1].partName.toUpperCase().includes('RADEON') ? (
+                <CpuGpu src="../images/radeon.svg" />
+              ) : (
+                ''
+              )}
+            </CpuLogoContainer>
             <PcBuildImage src={image} />
             <SwipeIndicatorContainer>
               <TiChevronRight onClick={() => setIndex(1)} />

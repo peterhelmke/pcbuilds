@@ -1,11 +1,86 @@
 export default function PcBuildsData() {
   return [
     {
+      title: 'ASUS ROG Galore',
+      performance: 10,
+      bookmarked: false,
+      category: 'gaming',
+      subtitle: 'Featured Build',
+      image: '../images/phanteksevolvxbk.jpg',
+      keyFacts:
+        'ROG Lorem ipsum dolor sit amet, ROG consetetur sadipscing elitr ROG Lorem ipsum dolor sit amet, ROG consetetur sadipscing elitr ROG',
+      parts: [
+        {
+          partManufacturer: 'Intel',
+          partName: 'i9-9900K',
+          partPrice: 527.99,
+          partUrl: 'https://amzn.to/2TmvO1X',
+          partAsin: 'asin.B005404P9I',
+        },
+        {
+          partManufacturer: 'ASUS',
+          partName: 'ROG STRIX GEFORCE RTX2080TI',
+          partPrice: 1399,
+          partUrl: 'https://amzn.to/2Tj4KAv',
+          partAsin: 'asin.B07K4B9T6M',
+        },
+        {
+          partManufacturer: 'Phanteks',
+          partName: 'Enthoo Evolv X Black',
+          partPrice: 212.99,
+          partUrl: 'https://amzn.to/2Jpy4W8',
+          partAsin: 'asin.B07GY26TZJ',
+        },
+        {
+          partManufacturer: 'G.Skill',
+          partName: 'Z RGB 32 GB DDR4 3200 (8GBx4)',
+          partPrice: 362.34,
+          partUrl: 'https://amzn.to/2TZdU9A',
+          partAsin: 'asin.B01MSBS0UT',
+        },
+        {
+          partManufacturer: 'ASUS',
+          partName: 'ROG Maximus XI Formula',
+          partPrice: 470.99,
+          partUrl: 'https://amzn.to/2Jqwfse',
+          partAsin: 'asin.B07J54MQ5X',
+        },
+        {
+          partManufacturer: 'ASUS',
+          partName: 'ROG Ryujin 360',
+          partPrice: 249.99,
+          partUrl: 'https://amzn.to/2WdNxKK',
+          partAsin: 'asin.B07JVQXH8M',
+        },
+        {
+          partManufacturer: 'Samsung',
+          partName: '970 Evo Plus 1TB',
+          partPrice: 226.18,
+          partUrl: 'https://amzn.to/2Hvqnw6',
+          partAsin: 'asin.B07MBQPQ62',
+        },
+        {
+          partManufacturer: 'ASUS',
+          partName: 'ROG Thor-850P',
+          partPrice: 239.99,
+          partUrl: 'https://amzn.to/2HxQsub',
+          partAsin: 'asin.B07HZ9JKN7',
+        },
+        {
+          partManufacturer: 'CableMod',
+          partName: 'PRO ModMesh RT-Series ASUS ROG/Seasonic',
+          partPrice: 104.9,
+          partUrl: 'https://amzn.to/2WisYgh',
+          partAsin: 'asin.B07JL2KSGX',
+        },
+      ],
+    },
+    {
       title: 'Apex Gaming Build',
       performance: 7,
       bookmarked: false,
       category: 'gaming',
-      subtitle: 'Featured Build',
+      subtitle: 'Play like a Pro',
       image: '../images/phanteksp300tgbk.jpg',
       keyFacts:
         'A build capable of all modern titles up to WQHD-resolution and simultanous streaming.',
