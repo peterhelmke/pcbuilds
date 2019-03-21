@@ -11,6 +11,7 @@ const BookmarksPlaceholder = styled.div`
   color: #afafaf;
   align-items: center;
   justify-content: center;
+  padding: 1px;
 `
 
 export default function CardsRender({ cards, bookmarkToggle }) {

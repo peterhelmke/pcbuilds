@@ -61,180 +61,237 @@ function App() {
     <Router>
       <PageGrid>
         <Header />
-        <CardContainer>
-          <Route
-            exact
-            path="/"
-            render={() => (
-              <CardsRender bookmarkToggle={bookmarkToggle} cards={cards} />
-            )}
-          />
-          <Route
-            exact
-            path="/gaming"
-            render={() => (
-              <CardsRender
-                bookmarkToggle={bookmarkToggle}
-                cards={cards.filter(card => card.category === 'gaming')}
-              />
-            )}
-          />
-          <Route
-            exact
-            path="/editing"
-            render={() => (
-              <CardsRender
-                bookmarkToggle={bookmarkToggle}
-                cards={cards.filter(card => card.category === 'editing')}
-              />
-            )}
-          />
-          <Route
-            exact
-            path="/office"
-            render={() => (
-              <CardsRender
-                bookmarkToggle={bookmarkToggle}
-                cards={cards.filter(card => card.category === 'office')}
-              />
-            )}
-          />
-          <Route
-            exact
-            path="/ascending"
-            render={() => (
-              <CardsRender
-                bookmarkToggle={bookmarkToggle}
-                cards={cards.sort(
-                  (a, b) => parseFloat(a.total) - parseFloat(b.total)
-                )}
-              />
-            )}
-          />
-          <Route
-            exact
-            path="/gaming/ascending"
-            render={() => (
-              <CardsRender
-                bookmarkToggle={bookmarkToggle}
-                cards={cards
-                  .filter(card => card.category === 'gaming')
-                  .sort((a, b) => parseFloat(a.total) - parseFloat(b.total))}
-              />
-            )}
-          />
-          <Route
-            exact
-            path="/editing/ascending"
-            render={() => (
-              <CardsRender
-                bookmarkToggle={bookmarkToggle}
-                cards={cards
-                  .filter(card => card.category === 'editing')
-                  .sort((a, b) => parseFloat(a.total) - parseFloat(b.total))}
-              />
-            )}
-          />
-          <Route
-            exact
-            path="/office/ascending"
-            render={() => (
-              <CardsRender
-                bookmarkToggle={bookmarkToggle}
-                cards={cards
-                  .filter(card => card.category === 'office')
-                  .sort((a, b) => parseFloat(a.total) - parseFloat(b.total))}
-              />
-            )}
-          />
-          <Route
-            exact
-            path="/descending"
-            render={() => (
-              <CardsRender
-                bookmarkToggle={bookmarkToggle}
-                cards={cards.sort(
-                  (a, b) => parseFloat(b.total) - parseFloat(a.total)
-                )}
-              />
-            )}
-          />
-          <Route
-            exact
-            path="/gaming/descending"
-            render={() => (
-              <CardsRender
-                bookmarkToggle={bookmarkToggle}
-                cards={cards
-                  .filter(card => card.category === 'gaming')
-                  .sort((a, b) => parseFloat(b.total) - parseFloat(a.total))}
-              />
-            )}
-          />
-          <Route
-            exact
-            path="/editing/descending"
-            render={() => (
-              <CardsRender
-                bookmarkToggle={bookmarkToggle}
-                cards={cards
-                  .filter(card => card.category === 'editing')
-                  .sort((a, b) => parseFloat(b.total) - parseFloat(a.total))}
-              />
-            )}
-          />
-          <Route
-            exact
-            path="/office/descending"
-            render={() => (
-              <CardsRender
-                bookmarkToggle={bookmarkToggle}
-                cards={cards
-                  .filter(card => card.category === 'office')
-                  .sort((a, b) => parseFloat(b.total) - parseFloat(a.total))}
-              />
-            )}
-          />
-          <Route
-            exact
-            path="/bookmarks"
-            render={() => (
-              <CardsRenderBookmarks
-                bookmarkToggle={bookmarkToggle}
-                cards={cards.filter(card => card.bookmarked)}
-              />
-            )}
-          />
-          <Route
-            exact
-            path="/bookmarks/ascending"
-            render={() => (
-              <CardsRenderBookmarks
-                bookmarkToggle={bookmarkToggle}
-                cards={cards
-                  .filter(card => card.bookmarked)
-                  .sort((a, b) => parseFloat(a.total) - parseFloat(b.total))}
-              />
-            )}
-          />
-          <Route
-            exact
-            path="/bookmarks/descending"
-            render={() => (
-              <CardsRenderBookmarks
-                bookmarkToggle={bookmarkToggle}
-                cards={cards
-                  .filter(card => card.bookmarked)
-                  .sort((a, b) => parseFloat(b.total) - parseFloat(a.total))}
-              />
-            )}
-          />
-        </CardContainer>
+        <Route
+          exact
+          path="/"
+          render={() => (
+            <React.Fragment>
+              <CardContainer>
+                <CardsRender bookmarkToggle={bookmarkToggle} cards={cards} />
+              </CardContainer>
+            </React.Fragment>
+          )}
+        />
+        <Route
+          exact
+          path="/gaming"
+          render={() => (
+            <React.Fragment>
+              <CardContainer>
+                <CardsRender
+                  bookmarkToggle={bookmarkToggle}
+                  cards={cards.filter(card => card.category === 'gaming')}
+                />
+              </CardContainer>
+            </React.Fragment>
+          )}
+        />
+        <Route
+          exact
+          path="/editing"
+          render={() => (
+            <React.Fragment>
+              <CardContainer>
+                <CardsRender
+                  bookmarkToggle={bookmarkToggle}
+                  cards={cards.filter(card => card.category === 'editing')}
+                />
+              </CardContainer>
+            </React.Fragment>
+          )}
+        />
+        <Route
+          exact
+          path="/office"
+          render={() => (
+            <React.Fragment>
+              <CardContainer>
+                <CardsRender
+                  bookmarkToggle={bookmarkToggle}
+                  cards={cards.filter(card => card.category === 'office')}
+                />
+              </CardContainer>
+            </React.Fragment>
+          )}
+        />
+        <Route
+          exact
+          path="/ascending"
+          render={() => (
+            <React.Fragment>
+              <CardContainer>
+                <CardsRender
+                  bookmarkToggle={bookmarkToggle}
+                  cards={cards.sort(
+                    (a, b) => parseFloat(a.total) - parseFloat(b.total)
+                  )}
+                />
+              </CardContainer>
+            </React.Fragment>
+          )}
+        />
+        <Route
+          exact
+          path="/gaming/ascending"
+          render={() => (
+            <React.Fragment>
+              <CardContainer>
+                <CardsRender
+                  bookmarkToggle={bookmarkToggle}
+                  cards={cards
+                    .filter(card => card.category === 'gaming')
+                    .sort((a, b) => parseFloat(a.total) - parseFloat(b.total))}
+                />
+              </CardContainer>
+            </React.Fragment>
+          )}
+        />
+        <Route
+          exact
+          path="/editing/ascending"
+          render={() => (
+            <React.Fragment>
+              <CardContainer>
+                <CardsRender
+                  bookmarkToggle={bookmarkToggle}
+                  cards={cards
+                    .filter(card => card.category === 'editing')
+                    .sort((a, b) => parseFloat(a.total) - parseFloat(b.total))}
+                />
+              </CardContainer>
+            </React.Fragment>
+          )}
+        />
+        <Route
+          exact
+          path="/office/ascending"
+          render={() => (
+            <React.Fragment>
+              <CardContainer>
+                <CardsRender
+                  bookmarkToggle={bookmarkToggle}
+                  cards={cards
+                    .filter(card => card.category === 'office')
+                    .sort((a, b) => parseFloat(a.total) - parseFloat(b.total))}
+                />
+              </CardContainer>
+            </React.Fragment>
+          )}
+        />
+        <Route
+          exact
+          path="/descending"
+          render={() => (
+            <React.Fragment>
+              <CardContainer>
+                <CardsRender
+                  bookmarkToggle={bookmarkToggle}
+                  cards={cards.sort(
+                    (a, b) => parseFloat(b.total) - parseFloat(a.total)
+                  )}
+                />
+              </CardContainer>
+            </React.Fragment>
+          )}
+        />
+        <Route
+          exact
+          path="/gaming/descending"
+          render={() => (
+            <React.Fragment>
+              <CardContainer>
+                <CardsRender
+                  bookmarkToggle={bookmarkToggle}
+                  cards={cards
+                    .filter(card => card.category === 'gaming')
+                    .sort((a, b) => parseFloat(b.total) - parseFloat(a.total))}
+                />{' '}
+              </CardContainer>
+            </React.Fragment>
+          )}
+        />
+        <Route
+          exact
+          path="/editing/descending"
+          render={() => (
+            <React.Fragment>
+              <CardContainer>
+                <CardsRender
+                  bookmarkToggle={bookmarkToggle}
+                  cards={cards
+                    .filter(card => card.category === 'editing')
+                    .sort((a, b) => parseFloat(b.total) - parseFloat(a.total))}
+                />
+              </CardContainer>
+            </React.Fragment>
+          )}
+        />
+        <Route
+          exact
+          path="/office/descending"
+          render={() => (
+            <React.Fragment>
+              <CardContainer>
+                <CardsRender
+                  bookmarkToggle={bookmarkToggle}
+                  cards={cards
+                    .filter(card => card.category === 'office')
+                    .sort((a, b) => parseFloat(b.total) - parseFloat(a.total))}
+                />
+              </CardContainer>
+            </React.Fragment>
+          )}
+        />
+        <Route
+          exact
+          path="/bookmarks"
+          render={() => (
+            <React.Fragment>
+              <CardContainer>
+                <CardsRenderBookmarks
+                  bookmarkToggle={bookmarkToggle}
+                  cards={cards.filter(card => card.bookmarked)}
+                />
+              </CardContainer>
+            </React.Fragment>
+          )}
+        />
+        <Route
+          exact
+          path="/bookmarks/ascending"
+          render={() => (
+            <React.Fragment>
+              <CardContainer>
+                <CardsRenderBookmarks
+                  bookmarkToggle={bookmarkToggle}
+                  cards={cards
+                    .filter(card => card.bookmarked)
+                    .sort((a, b) => parseFloat(a.total) - parseFloat(b.total))}
+                />
+              </CardContainer>
+            </React.Fragment>
+          )}
+        />
+        <Route
+          exact
+          path="/bookmarks/descending"
+          render={() => (
+            <React.Fragment>
+              <CardContainer>
+                <CardsRenderBookmarks
+                  bookmarkToggle={bookmarkToggle}
+                  cards={cards
+                    .filter(card => card.bookmarked)
+                    .sort((a, b) => parseFloat(b.total) - parseFloat(a.total))}
+                />
+              </CardContainer>
+            </React.Fragment>
+          )}
+        />
         <Footer />
         <GlobalStyle />
       </PageGrid>
     </Router>
   )
 }
-
 export default App

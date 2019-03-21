@@ -4,13 +4,15 @@ import styled from 'styled-components'
 import {
   TiStarFullOutline,
   TiStarOutline,
-  TiFlash,
   TiShoppingCart,
   TiChevronRight,
+  TiChevronLeft,
 } from 'react-icons/ti'
+import { FaRocket } from 'react-icons/fa'
 import { uid } from 'react-uid'
 import CardTitle from './CardTitle'
 import SwipeableViews from 'react-swipeable-views'
+import { NavLink } from 'react-router-dom'
 
 const StyledCard = styled.section`
   padding: 0 25px 25px 25px;
@@ -36,11 +38,10 @@ const PcBuildTitleContainer = styled.div`
 
 const PerformanceIndicator = styled.div`
   display: flex;
-  min-width: 40px;
-  padding-right: 5px;
+  padding: 2px 5px 2px 5px;
+  justify-content: center;
   align-items: center;
-  height: 27px;
-  color: crimson;
+  color: #330086;
   border: solid 1px;
   border-color: transparent;
   border-radius: 10px;
@@ -54,19 +55,18 @@ const BookmarkStarContainer = styled.div`
   font-size: 25px;
   cursor: pointer;
   color: #330086;
-  :hover {
-    color: #440086;
-  }
 `
 
 const PcBuildSubtitleContainer = styled.div`
   display: grid;
-  grid-template-columns: auto 1fr;
+  align-items: center;
+  grid-template-columns: auto 1fr auto;
+  height: 20px;
 `
 
-const CategoryTag = styled.div`
+const CategoryTag = styled(NavLink)`
   display: flex;
-  margin: 5px 5px 5px 0;
+
   height: 27px;
   padding: 5px;
   justify-content: center;
@@ -75,10 +75,15 @@ const CategoryTag = styled.div`
   background: #330086;
   color: white;
   border-radius: 10px;
+  text-decoration: none;
+  :hover {
+    background: #440086;
+  }
 `
 
 const PcBuildSubtitle = styled.h3`
-  margin: 10px 0 0 0;
+  margin: 0;
+  margin-left: 5px;
   font-size: 16px;
   font-weight: lighter;
 `
@@ -111,9 +116,9 @@ const PcBuildImage = styled.img`
 
 const SwipeIndicatorContainer = styled.div`
   display: flex;
-  justify-content: flex-end;
+  align-items: center;
   color: #afafaf;
-  font-size: 32px;
+  font-size: 14px;
   :hover {
     color: #5f5f5f;
   }
@@ -123,6 +128,13 @@ const KeyFacts = styled.section`
   margin-top: 15px;
   line-height: 1.5;
   height: 50px;
+`
+
+const PartListTitleGrid = styled.div`
+  align-items: center;
+  height: 20px;
+  display: grid;
+  grid-template-columns: 1fr auto;
 `
 
 const PartListTitle = styled.h3`
@@ -181,22 +193,22 @@ const PcBuildTotal = styled.button`
   justify-content: center;
   align-items: center;
   font-size: 14px;
-
   width: 150px;
-  height: 30px;
+  height: 34px;
   color: white;
   border: solid 1px;
-  border-color: #330086;
-  background: #330086;
+  border-color: #6d36c6;
+  background: #6d36c6;
   border-radius: 10px;
   :hover {
-    border-color: #440086;
-    background: #440086;
+    border-color: #330086;
+    background: #330086;
   }
 `
 
 const SwipeContainer = styled.div`
   min-height: 388px;
+  overflow-y: hidden;
 `
 
 Card.propTypes = {
@@ -238,27 +250,47 @@ export default function Card({
         <PerformanceIndicator
           style={
             performance >= 9
-              ? { borderColor: '#330086', color: '#330086' }
+              ? { color: '#330086' }
               : performance >= 8
-              ? { color: '#330086CC' }
+              ? { opacity: 0.8 }
               : performance >= 6
-              ? { color: '#33008699' }
+              ? { opacity: 0.7 }
               : performance >= 4
-              ? { color: '#33008666' }
-              : { color: '#3300864D' }
+              ? { opacity: 0.6 }
+              : { opacity: 0.4 }
           }>
-          <TiFlash style={{ fontSize: '22px' }} />
+          <FaRocket />
+          &nbsp;
           <strong> {performance} </strong>
         </PerformanceIndicator>
         <BookmarkStarContainer onClick={() => onBookmark(title)}>
-          {bookmarked ? <TiStarFullOutline /> : <TiStarOutline />}
+          {bookmarked ? (
+            <TiStarFullOutline style={{ color: '#6d36c6' }} />
+          ) : (
+            <TiStarOutline />
+          )}
         </BookmarkStarContainer>
       </PcBuildTitleContainer>
       <SwipeableViews index={index} onChangeIndex={() => setIndex(0)}>
         <SwipeContainer>
           <PcBuildSubtitleContainer>
-            <CategoryTag>{category} </CategoryTag>
+            <CategoryTag
+              to={
+                category === 'gaming'
+                  ? '/gaming'
+                  : category === 'editing'
+                  ? '/editing'
+                  : category === 'office'
+                  ? '/office'
+                  : '/'
+              }>
+              {category}{' '}
+            </CategoryTag>
             <PcBuildSubtitle>{subtitle}</PcBuildSubtitle>
+            <SwipeIndicatorContainer>
+              Details
+              <TiChevronRight onClick={() => setIndex(1)} size="25px" />
+            </SwipeIndicatorContainer>
           </PcBuildSubtitleContainer>
           <PcBuildImageContainer>
             <CpuLogoContainer>
@@ -279,14 +311,16 @@ export default function Card({
               )}
             </CpuLogoContainer>
             <PcBuildImage src={image} />
-            <SwipeIndicatorContainer>
-              <TiChevronRight onClick={() => setIndex(1)} />
-            </SwipeIndicatorContainer>
           </PcBuildImageContainer>
           <KeyFacts>{keyFacts}</KeyFacts>
         </SwipeContainer>
         <SwipeContainer>
-          <PartListTitle>Part List</PartListTitle>
+          <PartListTitleGrid>
+            <PartListTitle>Part List</PartListTitle>
+            <SwipeIndicatorContainer>
+              <TiChevronLeft onClick={() => setIndex(0)} size="25px" />
+            </SwipeIndicatorContainer>
+          </PartListTitleGrid>
           {parts.map(part => (
             <Part key={uid(part)}>
               <div>

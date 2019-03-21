@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import { TiSocialInstagram, TiSocialYoutube } from 'react-icons/ti'
 
 const StyledHeader = styled.header`
+  overflow-y: hidden;
   display: grid;
   grid-template-rows: 50px 50px;
   background: linear-gradient(to right, #11002c, #330086);
