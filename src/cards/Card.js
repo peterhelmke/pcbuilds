@@ -42,9 +42,6 @@ const PerformanceIndicator = styled.div`
   justify-content: center;
   align-items: center;
   color: #330086;
-  border: solid 1px;
-  border-color: transparent;
-  border-radius: 10px;
   margin-right: 10px;
 `
 
@@ -66,7 +63,6 @@ const PcBuildSubtitleContainer = styled.div`
 
 const CategoryTag = styled(NavLink)`
   display: flex;
-
   height: 27px;
   padding: 5px;
   justify-content: center;
