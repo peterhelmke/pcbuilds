@@ -6,13 +6,28 @@ import {
   TiStarOutline,
   TiArrowUpThick,
   TiArrowDownThick,
+  TiRefresh,
 } from 'react-icons/ti'
 
 const FooterNav = styled.nav`
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   height: 50px;
   background: linear-gradient(to right, #11002c, #330086);
+`
+
+const Reset = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 32px;
+  background: rgba(192, 192, 192, 0.12);
+  text-decoration: none;
+  font-weight: bold;
+  :hover  {
+    color: #f1f1f1;
+  }
 `
 
 const FooterSortLink = styled(NavLink)`
@@ -22,6 +37,8 @@ const FooterSortLink = styled(NavLink)`
   color: rgba(255, 255, 255, 0.5);
   font-size: 25px;
   background: rgba(192, 192, 192, 0.12);
+  text-decoration: none;
+  font-weight: bold;
   :hover  {
     color: #f1f1f1;
   }
@@ -50,6 +67,20 @@ const FooterNavBookmark = styled(NavLink)`
 export default function Footer() {
   return (
     <FooterNav>
+      <Reset
+        onClick={
+          window.location.pathname.includes('gaming')
+            ? () => (window.location.href = '/gaming')
+            : window.location.pathname.includes('editing')
+            ? () => (window.location.href = '/editing')
+            : window.location.pathname.includes('office')
+            ? () => (window.location.href = '/office')
+            : window.location.pathname.includes('bookmarks')
+            ? () => (window.location.href = '/bookmarks')
+            : () => (window.location.href = '/')
+        }>
+        <TiRefresh />
+      </Reset>
       <FooterSortLink
         to={
           window.location.pathname === '/'
@@ -74,7 +105,7 @@ export default function Footer() {
             ? '/bookmarks/ascending'
             : window.location.pathname
         }>
-        <TiArrowUpThick />
+        €<TiArrowUpThick />
       </FooterSortLink>
       <FooterSortLink
         to={
@@ -100,15 +131,18 @@ export default function Footer() {
             ? '/bookmarks/descending'
             : window.location.pathname
         }>
-        <TiArrowDownThick />
+        €<TiArrowDownThick />
       </FooterSortLink>
-      <FooterNavBookmark to="/bookmarks">
+      <FooterNavBookmark
+        to={
+          window.location.pathname.includes('bookmarks') ? '/' : '/bookmarks'
+        }>
         {window.location.pathname === '/bookmarks' ? (
-          <TiStarFullOutline />
+          <TiStarFullOutline style={{ color: '#ffde00' }} />
         ) : window.location.pathname === '/bookmarks/ascending' ? (
-          <TiStarFullOutline />
+          <TiStarFullOutline style={{ color: '#ffde00' }} />
         ) : window.location.pathname === '/bookmarks/descending' ? (
-          <TiStarFullOutline />
+          <TiStarFullOutline style={{ color: '#ffde00' }} />
         ) : (
           <TiStarOutline />
         )}

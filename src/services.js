@@ -15,9 +15,5 @@ export function saveToStorage(name, data) {
 
 export function getFromStorage(name) {
   const dataString = localStorage.getItem(name)
-  try {
-    return JSON.parse(dataString)
-  } catch (error) {
-    console.error(error.message)
-  }
+  return JSON.parse(dataString)
 }
