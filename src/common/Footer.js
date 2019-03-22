@@ -81,7 +81,6 @@ export default function Footer() {
         }>
         <TiRefresh />
       </Reset>
-
       <FooterSortLink
         to={
           window.location.pathname === '/'
@@ -134,8 +133,10 @@ export default function Footer() {
         }>
         €<TiArrowDownThick />
       </FooterSortLink>
-
-      <FooterNavBookmark to="/bookmarks">
+      <FooterNavBookmark
+        to={
+          window.location.pathname.includes('bookmarks') ? '/' : '/bookmarks'
+        }>
         {window.location.pathname === '/bookmarks' ? (
           <TiStarFullOutline style={{ color: '#ffde00' }} />
         ) : window.location.pathname === '/bookmarks/ascending' ? (
@@ -149,15 +150,3 @@ export default function Footer() {
     </FooterNav>
   )
 }
-
-/*exact
-        to={
-          window.location.pathname.includes('gaming')
-            ? '/gaming'
-            : window.location.pathname.includes('editing')
-            ? '/editing'
-            : window.location.pathname.includes('office')
-            ? '/office'
-            : window.location.pathname === '/'
-            ? '/'
-            : '/'*/

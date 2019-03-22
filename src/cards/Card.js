@@ -271,7 +271,7 @@ export default function Card({
           )}
         </BookmarkStarContainer>
       </PcBuildTitleContainer>
-      <SwipeableViews index={index} onChangeIndex={() => setIndex(0)}>
+      <SwipeableViews index={index} onChangeIndex={() => setIndex(1)}>
         <SwipeContainer>
           <PcBuildSubtitleContainer>
             <CategoryTag
@@ -289,7 +289,10 @@ export default function Card({
             <PcBuildSubtitle>{subtitle}</PcBuildSubtitle>
             <SwipeIndicatorContainer>
               Details
-              <TiChevronRight onClick={() => setIndex(1)} size="25px" />
+              <TiChevronRight
+                onClick={index === 1 ? () => setIndex(0) : () => setIndex(1)}
+                size="25px"
+              />
             </SwipeIndicatorContainer>
           </PcBuildSubtitleContainer>
           <PcBuildImageContainer>
