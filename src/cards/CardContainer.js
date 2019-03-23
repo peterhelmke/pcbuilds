@@ -5,4 +5,5 @@ export default styled.section`
   scroll-snap-type: y mandatory;
   -webkit-overflow-scrolling: touch;
   padding-bottom: 10px;
+  max-width: 1025px;
 `

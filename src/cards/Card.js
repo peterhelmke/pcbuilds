@@ -30,7 +30,12 @@ const PcBuildTitleContainer = styled.div`
   top: 0;
   margin: -25px -25px 0 -25px;
   padding: 25px 25px 5px 25px;
-  background: #ffffff;
+  background: linear-gradient(
+    to bottom,
+    #ffffff,
+    #ffffff,
+    rgba(255, 255, 255, 0.9)
+  );
   border-radius: 0 0 25px 25px;
   z-index: 1;
 `
@@ -100,7 +105,7 @@ const PcBuildImageContainer = styled.div`
   margin-top: 10px;
 `
 
-const CpuLogoContainer = styled.div`
+const CpuGpuLogoContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -303,7 +308,7 @@ export default function Card({
             </SwipeIndicatorContainer>
           </PcBuildSubtitleContainer>
           <PcBuildImageContainer>
-            <CpuLogoContainer>
+            <CpuGpuLogoContainer>
               {parts[0].partManufacturer === 'Intel' ? (
                 <CpuGpu src="../images/intel.svg" />
               ) : (
@@ -319,7 +324,7 @@ export default function Card({
               ) : (
                 ''
               )}
-            </CpuLogoContainer>
+            </CpuGpuLogoContainer>
             <PcBuildImage src={image} />
           </PcBuildImageContainer>
           <KeyFacts>{keyFacts}</KeyFacts>
