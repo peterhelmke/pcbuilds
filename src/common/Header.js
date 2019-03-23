@@ -26,7 +26,7 @@ const HeaderTitleWrapper = styled.div`
 
 const HeaderTitleWhite = styled.div`
   cursor: pointer;
-  color: #f1f1f1;
+  color: white;
 `
 
 const HeaderTitleYellow = styled.div`
@@ -39,12 +39,13 @@ const SocialMedia = styled.div`
   justify-content: flex-end;
   font-size: 20px;
   padding: 13px;
-  a:link,
-  a:visited {
-    color: rgba(255, 255, 255, 0.5);
-  }
-  a:hover {
-    color: #f1f1f1;
+  color: rgba(255, 255, 255, 0.3);
+  a {
+    transition: all 0.3s ease-in;
+    color: rgba(255, 255, 255, 0.3);
+    :hover {
+      color: white;
+    }
   }
 `
 
@@ -62,12 +63,13 @@ const HeaderCategoryLink = styled(NavLink)`
   text-decoration: none;
   color: rgba(255, 255, 255, 0.5);
   background: rgba(192, 192, 192, 0.12);
+  transition: all 0.3s ease-in;
   :hover  {
-    color: #f1f1f1;
+    color: white;
   }
   &.active {
     background: transparent;
-    color: #f1f1f1;
+    color: white;
   }
 `
 
