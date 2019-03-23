@@ -14,14 +14,13 @@ import SwipeableViews from 'react-swipeable-views'
 import { NavLink } from 'react-router-dom'
 
 const StyledCard = styled.section`
-  padding: 25px 25px 25px 25px;
+  padding: 25px;
   background: linear-gradient(to bottom, #ffffff, #ffffff, #fafafa);
   min-width: 280px;
   height: 510px;
-  border-bottom: solid 1px;
-  border-color: #f1f1f1;
-  scroll-snap-align: start;
+  border-bottom: solid 1px #f1f1f1;
   border-radius: 0 0 25px 25px;
+  scroll-snap-align: start;
 `
 
 const PcBuildTitleContainer = styled.div`
@@ -159,10 +158,8 @@ const PartRow = styled.div`
 `
 
 const Part = styled.div`
-  border-bottom: solid 1px;
-  border-color: #f1f1f1;
+  border-bottom: solid 1px #f1f1f1;
   height: 30px;
-  display: block;
   padding-top: 8px;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -179,8 +176,7 @@ const PartPrice = styled.button`
   font-size: 13px;
   background: transparent;
   color: #330086;
-  border: solid 1px;
-  border-color: #330086;
+  border: solid 1px #330086;
   border-radius: 5px;
   transition: all 0.3s ease-in;
   :hover {
@@ -209,8 +205,7 @@ const PcBuildTotal = styled.button`
   width: 150px;
   height: 34px;
   color: white;
-  border: solid 1px;
-  border-color: #6d36c6;
+  border: solid 1px #6d36c6;
   background: #6d36c6;
   border-radius: 5px;
   transition: all 0.3s ease-in;
