@@ -8,7 +8,7 @@ export default function PcBuildsData() {
       subtitle: 'Featured Build',
       image: '../images/phanteksevolvxbk.jpg',
       keyFacts:
-        'ROG Lorem ipsum dolor sit amet, ROG consetetur sadipscing elitr ROG Lorem ipsum dolor sit amet, ROG consetetur sadipscing elitr ROG',
+        'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.',
       parts: [
         {
           partManufacturer: 'Intel',
@@ -33,7 +33,7 @@ export default function PcBuildsData() {
         },
         {
           partManufacturer: 'G.Skill',
-          partName: 'Z RGB 32 GB DDR4 3200 (8GBx4)',
+          partName: 'Trident Z RGB 32 GB DDR4 3200 (8GBx4)',
           partPrice: 362.34,
           partUrl: 'https://amzn.to/2TZdU9A',
           partAsin: 'asin.B01MSBS0UT',
@@ -151,7 +151,8 @@ export default function PcBuildsData() {
       category: 'editing',
       subtitle: 'Edit like a Pro!',
       image: '../images/fractaldesignmeshifyctg.jpg',
-      keyFacts: 'Edit edit edit edit edit',
+      keyFacts:
+        'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.',
       parts: [
         {
           partManufacturer: 'AMD',
@@ -219,7 +220,8 @@ export default function PcBuildsData() {
       category: 'office',
       subtitle: 'Bargain Build',
       image: '../images/CoolerMasterMasterBoxE300L.jpg',
-      keyFacts: 'Office SWAG',
+      keyFacts:
+        'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.',
       parts: [
         {
           partManufacturer: 'AMD',
@@ -287,7 +289,8 @@ export default function PcBuildsData() {
       category: 'gaming',
       subtitle: 'Lian Li Placeholder',
       image: '../images/lianlipco11dxbk.jpg',
-      keyFacts: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr',
+      keyFacts:
+        'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.',
       parts: [
         {
           partManufacturer: 'AMD',
@@ -355,7 +358,8 @@ export default function PcBuildsData() {
       category: 'gaming',
       subtitle: 'Cooler Master Placeholder',
       image: '../images/coolermasterq300l.jpg',
-      keyFacts: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr',
+      keyFacts:
+        'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.',
       parts: [
         {
           partManufacturer: 'AMD',
@@ -422,7 +426,8 @@ export default function PcBuildsData() {
       category: 'editing',
       subtitle: 'H700i Placeholder',
       image: '../images/nzxth700iw.jpg',
-      keyFacts: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr',
+      keyFacts:
+        'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.',
       parts: [
         {
           partManufacturer: 'AMD',

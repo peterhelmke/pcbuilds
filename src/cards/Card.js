@@ -10,14 +10,14 @@ import {
 } from 'react-icons/ti'
 import { FaRocket } from 'react-icons/fa'
 import { uid } from 'react-uid'
-import CardTitle from './CardTitle'
 import SwipeableViews from 'react-swipeable-views'
 import { NavLink } from 'react-router-dom'
 
 const StyledCard = styled.section`
-  padding: 0 25px 25px 25px;
-  background: linear-gradient(to bottom, #ffffff, #ffffff, #fbfbfb);
+  padding: 25px 25px 25px 25px;
+  background: linear-gradient(to bottom, #ffffff, #ffffff, #fafafa);
   min-width: 280px;
+  height: 510px;
   border-bottom: solid 1px;
   border-color: #f1f1f1;
   scroll-snap-align: start;
@@ -29,11 +29,18 @@ const PcBuildTitleContainer = styled.div`
   grid-template-columns: 1fr auto auto;
   position: sticky;
   top: 0;
-  margin: 0 -25px 0 -25px;
-  padding: 15px 25px 15px 25px;
+  margin: -25px -25px 0 -25px;
+  padding: 25px 25px 5px 25px;
   background: #ffffff;
   border-radius: 0 0 25px 25px;
   z-index: 1;
+`
+
+const PcBuildTitle = styled.h2`
+  margin: 0;
+  color: #330086;
+  font-weight: normal;
+  font-size: 20px;
 `
 
 const PerformanceIndicator = styled.div`
@@ -70,8 +77,9 @@ const CategoryTag = styled(NavLink)`
   font-size: 12px;
   background: #330086;
   color: white;
-  border-radius: 10px;
+  border-radius: 5px;
   text-decoration: none;
+  transition: all 0.3s ease-in;
   :hover {
     background: #440086;
   }
@@ -89,6 +97,7 @@ const PcBuildImageContainer = styled.div`
   grid-template-columns: 1fr auto 1fr;
   justify-content: center;
   align-items: center;
+  height: 200px;
   margin-top: 10px;
 `
 
@@ -106,24 +115,23 @@ const CpuGpu = styled.img`
 `
 
 const PcBuildImage = styled.img`
-  max-width: 210px;
-  max-height: 210px;
+  max-height: 185px;
 `
 
 const SwipeIndicatorContainer = styled.div`
   display: flex;
+  cursor: pointer;
   align-items: center;
   color: #afafaf;
   font-size: 14px;
+  transition: all 0.3s ease-in;
   :hover {
     color: #5f5f5f;
   }
 `
 
 const KeyFacts = styled.section`
-  margin-top: 15px;
-  line-height: 1.5;
-  height: 50px;
+  line-height: 1.7;
 `
 
 const PartListTitleGrid = styled.div`
@@ -139,7 +147,7 @@ const PartListTitle = styled.h3`
   font-weight: bold;
 `
 
-const Part = styled.div`
+const PartRow = styled.div`
   display: grid;
   grid-gap: 5px;
   margin-top: 10px;
@@ -147,28 +155,37 @@ const Part = styled.div`
   grid-template-rows: 30px;
   font-size: 14px;
   align-items: center;
-  border-bottom: solid 1px;
-  border-color: #f1f1f1;
   background: linear-gradient(to bottom, #ffffff, #fbfbfb);
 `
 
+const Part = styled.div`
+  border-bottom: solid 1px;
+  border-color: #f1f1f1;
+  height: 30px;
+  display: block;
+  padding-top: 8px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+`
+
 const PartPrice = styled.button`
-  margin-bottom: 5px;
   cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 27px;
   width: 70px;
-  font-size: 14px;
+  font-size: 13px;
   background: transparent;
   color: #330086;
   border: solid 1px;
   border-color: #330086;
-  border-radius: 10px;
+  border-radius: 5px;
+  transition: all 0.3s ease-in;
   :hover {
     background: #330086;
-    color: #f1f1f1;
+    color: white;
   }
 `
 
@@ -179,8 +196,8 @@ const PartPriceLink = styled.a`
 const PcBuildTotalRow = styled.div`
   justify-content: flex-end;
   align-items: center;
-  margin-top: 15px;
   display: flex;
+  padding-top: 5px;
 `
 
 const PcBuildTotal = styled.button`
@@ -195,7 +212,8 @@ const PcBuildTotal = styled.button`
   border: solid 1px;
   border-color: #6d36c6;
   background: #6d36c6;
-  border-radius: 10px;
+  border-radius: 5px;
+  transition: all 0.3s ease-in;
   :hover {
     border-color: #330086;
     background: #330086;
@@ -203,7 +221,7 @@ const PcBuildTotal = styled.button`
 `
 
 const SwipeContainer = styled.div`
-  min-height: 388px;
+  height: 390px;
   overflow-y: hidden;
 `
 
@@ -242,7 +260,7 @@ export default function Card({
   return (
     <StyledCard>
       <PcBuildTitleContainer>
-        <CardTitle title={title} />
+        <PcBuildTitle> {title} </PcBuildTitle>
         <PerformanceIndicator
           style={
             performance >= 9
@@ -283,12 +301,10 @@ export default function Card({
               {category}{' '}
             </CategoryTag>
             <PcBuildSubtitle>{subtitle}</PcBuildSubtitle>
-            <SwipeIndicatorContainer>
+            <SwipeIndicatorContainer
+              onClick={index === 1 ? () => setIndex(0) : () => setIndex(1)}>
               Details
-              <TiChevronRight
-                onClick={index === 1 ? () => setIndex(0) : () => setIndex(1)}
-                size="25px"
-              />
+              <TiChevronRight size="25px" />
             </SwipeIndicatorContainer>
           </PcBuildSubtitleContainer>
           <PcBuildImageContainer>
@@ -316,15 +332,15 @@ export default function Card({
         <SwipeContainer>
           <PartListTitleGrid>
             <PartListTitle>Part List</PartListTitle>
-            <SwipeIndicatorContainer>
-              <TiChevronLeft onClick={() => setIndex(0)} size="25px" />
+            <SwipeIndicatorContainer onClick={() => setIndex(0)}>
+              <TiChevronLeft size="25px" />
             </SwipeIndicatorContainer>
           </PartListTitleGrid>
           {parts.map(part => (
-            <Part key={uid(part)}>
-              <div>
+            <PartRow key={uid(part)}>
+              <Part>
                 <strong>{part.partManufacturer}</strong> {part.partName}
-              </div>
+              </Part>
               <PartPriceLink
                 href={part.partUrl}
                 target="_blank"
@@ -337,7 +353,7 @@ export default function Card({
                   €
                 </PartPrice>
               </PartPriceLink>
-            </Part>
+            </PartRow>
           ))}
         </SwipeContainer>
       </SwipeableViews>

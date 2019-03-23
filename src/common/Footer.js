@@ -1,33 +1,14 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
-import {
-  TiStarFullOutline,
-  TiStarOutline,
-  TiArrowUpThick,
-  TiArrowDownThick,
-  TiRefresh,
-} from 'react-icons/ti'
+import { TiStarFullOutline, TiStarOutline } from 'react-icons/ti'
+import { FaSortAmountDown, FaSortAmountUp } from 'react-icons/fa'
 
 const FooterNav = styled.nav`
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   height: 50px;
   background: linear-gradient(to right, #11002c, #330086);
-`
-
-const Reset = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: rgba(255, 255, 255, 0.5);
-  font-size: 32px;
-  background: rgba(192, 192, 192, 0.12);
-  text-decoration: none;
-  font-weight: bold;
-  :hover  {
-    color: #f1f1f1;
-  }
 `
 
 const FooterSortLink = styled(NavLink)`
@@ -35,16 +16,15 @@ const FooterSortLink = styled(NavLink)`
   justify-content: center;
   align-items: center;
   color: rgba(255, 255, 255, 0.5);
-  font-size: 25px;
+  font-size: 24px;
   background: rgba(192, 192, 192, 0.12);
-  text-decoration: none;
-  font-weight: bold;
+  transition: all 0.3s ease-in;
   :hover  {
-    color: #f1f1f1;
+    color: white;
   }
   &.active {
     background: transparent;
-    color: #f1f1f1;
+    color: white;
   }
 `
 
@@ -53,34 +33,35 @@ const FooterNavBookmark = styled(NavLink)`
   justify-content: center;
   align-items: center;
   color: rgba(255, 255, 255, 0.5);
-  font-size: 25px;
+  font-size: 29px;
   background: rgba(192, 192, 192, 0.12);
+  transition: all 0.3s ease-in;
   :hover  {
-    color: #f1f1f1;
+    color: white;
   }
   &.active {
     background: transparent;
-    color: #f1f1f1;
+    color: white;
   }
 `
 
 export default function Footer() {
   return (
     <FooterNav>
-      <Reset
-        onClick={
-          window.location.pathname.includes('gaming')
-            ? () => (window.location.href = '/gaming')
-            : window.location.pathname.includes('editing')
-            ? () => (window.location.href = '/editing')
-            : window.location.pathname.includes('office')
-            ? () => (window.location.href = '/office')
-            : window.location.pathname.includes('bookmarks')
-            ? () => (window.location.href = '/bookmarks')
-            : () => (window.location.href = '/')
+      <FooterNavBookmark
+        to={
+          window.location.pathname.includes('bookmarks') ? '/' : '/bookmarks'
         }>
-        <TiRefresh />
-      </Reset>
+        {window.location.pathname === '/bookmarks' ? (
+          <TiStarFullOutline style={{ color: '#ffde00' }} />
+        ) : window.location.pathname === '/bookmarks/ascending' ? (
+          <TiStarFullOutline style={{ color: '#ffde00' }} />
+        ) : window.location.pathname === '/bookmarks/descending' ? (
+          <TiStarFullOutline style={{ color: '#ffde00' }} />
+        ) : (
+          <TiStarOutline />
+        )}
+      </FooterNavBookmark>
       <FooterSortLink
         to={
           window.location.pathname === '/'
@@ -103,9 +84,17 @@ export default function Footer() {
             ? '/bookmarks/ascending'
             : window.location.pathname === '/bookmarks/descending'
             ? '/bookmarks/ascending'
-            : window.location.pathname
+            : window.location.pathname === '/gaming/ascending'
+            ? '/gaming'
+            : window.location.pathname === '/editing/ascending'
+            ? '/editing'
+            : window.location.pathname === '/office/ascending'
+            ? '/office'
+            : window.location.pathname === '/bookmarks/ascending'
+            ? '/bookmarks'
+            : '/'
         }>
-        €<TiArrowUpThick />
+        <FaSortAmountUp />
       </FooterSortLink>
       <FooterSortLink
         to={
@@ -129,24 +118,18 @@ export default function Footer() {
             ? '/bookmarks/descending'
             : window.location.pathname === '/bookmarks/ascending'
             ? '/bookmarks/descending'
-            : window.location.pathname
+            : window.location.pathname === '/gaming/descending'
+            ? '/gaming'
+            : window.location.pathname === '/editing/descending'
+            ? '/editing'
+            : window.location.pathname === '/office/descending'
+            ? '/office'
+            : window.location.pathname === '/bookmarks/descending'
+            ? '/bookmarks'
+            : '/'
         }>
-        €<TiArrowDownThick />
+        <FaSortAmountDown />
       </FooterSortLink>
-      <FooterNavBookmark
-        to={
-          window.location.pathname.includes('bookmarks') ? '/' : '/bookmarks'
-        }>
-        {window.location.pathname === '/bookmarks' ? (
-          <TiStarFullOutline style={{ color: '#ffde00' }} />
-        ) : window.location.pathname === '/bookmarks/ascending' ? (
-          <TiStarFullOutline style={{ color: '#ffde00' }} />
-        ) : window.location.pathname === '/bookmarks/descending' ? (
-          <TiStarFullOutline style={{ color: '#ffde00' }} />
-        ) : (
-          <TiStarOutline />
-        )}
-      </FooterNavBookmark>
     </FooterNav>
   )
 }
