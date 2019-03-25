@@ -4,11 +4,12 @@ import styled from 'styled-components'
 import { TiStarFullOutline, TiStarOutline } from 'react-icons/ti'
 import { FaSortAmountDown, FaSortAmountUp } from 'react-icons/fa'
 
-const FooterNav = styled.nav`
+const StyledFooter = styled.nav`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   height: 50px;
   background: linear-gradient(to right, #11002c, #330086);
+  user-select: none;
 `
 
 const FooterSortLink = styled(NavLink)`
@@ -47,7 +48,7 @@ const FooterNavBookmark = styled(NavLink)`
 
 export default function Footer() {
   return (
-    <FooterNav>
+    <StyledFooter>
       <FooterNavBookmark
         to={
           window.location.pathname.includes('bookmarks') ? '/' : '/bookmarks'
@@ -130,6 +131,6 @@ export default function Footer() {
         }>
         <FaSortAmountDown />
       </FooterSortLink>
-    </FooterNav>
+    </StyledFooter>
   )
 }

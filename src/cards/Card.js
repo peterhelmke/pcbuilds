@@ -83,7 +83,9 @@ const CategoryTag = styled(NavLink)`
   color: white;
   border-radius: 5px;
   text-decoration: none;
+  user-select: none;
   transition: all 0.3s ease-in;
+  user-select: none;
   :hover {
     background: #440086;
   }
@@ -94,6 +96,19 @@ const PcBuildSubtitle = styled.h3`
   margin-left: 5px;
   font-size: 16px;
   font-weight: lighter;
+`
+
+const SwipeIndicatorContainer = styled.div`
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  color: #afafaf;
+  font-size: 14px;
+  user-select: none;
+  transition: all 0.3s ease-in;
+  :hover {
+    color: #5f5f5f;
+  }
 `
 
 const PcBuildImageContainer = styled.div`
@@ -122,18 +137,6 @@ const PcBuildImage = styled.img`
   max-height: 185px;
 `
 
-const SwipeIndicatorContainer = styled.div`
-  display: flex;
-  cursor: pointer;
-  align-items: center;
-  color: #afafaf;
-  font-size: 14px;
-  transition: all 0.3s ease-in;
-  :hover {
-    color: #5f5f5f;
-  }
-`
-
 const KeyFacts = styled.section`
   line-height: 1.7;
 `
@@ -153,7 +156,7 @@ const PartListTitle = styled.h3`
 
 const PartRow = styled.div`
   display: grid;
-  grid-gap: 5px;
+  grid-gap: 10px;
   margin-top: 10px;
   grid-template-columns: auto 70px;
   grid-template-rows: 30px;
@@ -183,6 +186,7 @@ const PartPrice = styled.button`
   color: #330086;
   border: solid 1px #330086;
   border-radius: 5px;
+  user-select: none;
   transition: all 0.3s ease-in;
   :hover {
     background: #330086;
@@ -213,6 +217,7 @@ const PcBuildTotal = styled.button`
   border: solid 1px #6d36c6;
   background: #6d36c6;
   border-radius: 5px;
+  user-select: none;
   transition: all 0.3s ease-in;
   :hover {
     border-color: #330086;
@@ -359,7 +364,7 @@ export default function Card({
       </SwipeableViews>
       <PcBuildTotalRow>
         <form
-          action="http://www.amazon.de/exec/obidos/dt/assoc/handle-buy-box"
+          action="https://www.amazon.de/exec/obidos/dt/assoc/handle-buy-box"
           method="POST"
           target="_blank"
           rel="noreferrer noopener">

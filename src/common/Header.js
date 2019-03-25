@@ -8,6 +8,7 @@ const StyledHeader = styled.header`
   display: grid;
   grid-template-rows: 50px 50px;
   background: linear-gradient(to right, #11002c, #330086);
+  user-select: none;
 `
 
 const HeaderTitleContainer = styled.div`
