@@ -553,7 +553,7 @@ export default function PcBuildsData() {
         },
         {
           partManufacturer: 'ASUS',
-          partName: 'ROG STRIX GEFORCE RTX2080TI',
+          partName: 'ROG GEFORCE RTX2080TI STRIX',
           partPrice: 1399,
           partUrl: 'https://amzn.to/2Tj4KAv',
           partAsin: 'asin.B07K4B9T6M',
