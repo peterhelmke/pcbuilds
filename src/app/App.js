@@ -66,6 +66,34 @@ function App() {
     ])
   }
 
+  function filterCardsCategory(category) {
+    return cards.filter(card => card.category === category)
+  }
+
+  function allCardsAscending() {
+    return cards.sort(
+      (a, b) => parseFloat(a.totalNumber) - parseFloat(b.totalNumber)
+    )
+  }
+
+  function categoryCardsAscending(category) {
+    return cards
+      .filter(card => card.category === category)
+      .sort((a, b) => parseFloat(a.totalNumber) - parseFloat(b.totalNumber))
+  }
+
+  function allCardsDescending() {
+    return cards.sort(
+      (a, b) => parseFloat(b.totalNumber) - parseFloat(a.totalNumber)
+    )
+  }
+
+  function categoryCardsDescending(category) {
+    return cards
+      .filter(card => card.category === category)
+      .sort((a, b) => parseFloat(b.totalNumber) - parseFloat(a.totalNumber))
+  }
+
   return (
     <Router>
       <PageGrid>
@@ -89,7 +117,7 @@ function App() {
               <CardContainer>
                 <CardsRender
                   bookmarkToggle={bookmarkToggle}
-                  cards={cards.filter(card => card.category === 'gaming')}
+                  cards={filterCardsCategory('gaming')}
                 />
               </CardContainer>
             </React.Fragment>
@@ -103,7 +131,7 @@ function App() {
               <CardContainer>
                 <CardsRender
                   bookmarkToggle={bookmarkToggle}
-                  cards={cards.filter(card => card.category === 'editing')}
+                  cards={filterCardsCategory('editing')}
                 />
               </CardContainer>
             </React.Fragment>
@@ -117,7 +145,7 @@ function App() {
               <CardContainer>
                 <CardsRender
                   bookmarkToggle={bookmarkToggle}
-                  cards={cards.filter(card => card.category === 'office')}
+                  cards={filterCardsCategory('office')}
                 />
               </CardContainer>
             </React.Fragment>
@@ -131,10 +159,7 @@ function App() {
               <CardContainer>
                 <CardsRender
                   bookmarkToggle={bookmarkToggle}
-                  cards={cards.sort(
-                    (a, b) =>
-                      parseFloat(a.totalNumber) - parseFloat(b.totalNumber)
-                  )}
+                  cards={allCardsAscending()}
                 />
               </CardContainer>
             </React.Fragment>
@@ -148,12 +173,7 @@ function App() {
               <CardContainer>
                 <CardsRender
                   bookmarkToggle={bookmarkToggle}
-                  cards={cards
-                    .filter(card => card.category === 'gaming')
-                    .sort(
-                      (a, b) =>
-                        parseFloat(a.totalNumber) - parseFloat(b.totalNumber)
-                    )}
+                  cards={categoryCardsAscending('gaming')}
                 />
               </CardContainer>
             </React.Fragment>
@@ -167,12 +187,7 @@ function App() {
               <CardContainer>
                 <CardsRender
                   bookmarkToggle={bookmarkToggle}
-                  cards={cards
-                    .filter(card => card.category === 'editing')
-                    .sort(
-                      (a, b) =>
-                        parseFloat(a.totalNumber) - parseFloat(b.totalNumber)
-                    )}
+                  cards={categoryCardsAscending('editing')}
                 />
               </CardContainer>
             </React.Fragment>
@@ -186,12 +201,7 @@ function App() {
               <CardContainer>
                 <CardsRender
                   bookmarkToggle={bookmarkToggle}
-                  cards={cards
-                    .filter(card => card.category === 'office')
-                    .sort(
-                      (a, b) =>
-                        parseFloat(a.totalNumber) - parseFloat(b.totalNumber)
-                    )}
+                  cards={categoryCardsAscending('office')}
                 />
               </CardContainer>
             </React.Fragment>
@@ -205,10 +215,7 @@ function App() {
               <CardContainer>
                 <CardsRender
                   bookmarkToggle={bookmarkToggle}
-                  cards={cards.sort(
-                    (a, b) =>
-                      parseFloat(b.totalNumber) - parseFloat(a.totalNumber)
-                  )}
+                  cards={allCardsDescending()}
                 />
               </CardContainer>
             </React.Fragment>
@@ -222,13 +229,8 @@ function App() {
               <CardContainer>
                 <CardsRender
                   bookmarkToggle={bookmarkToggle}
-                  cards={cards
-                    .filter(card => card.category === 'gaming')
-                    .sort(
-                      (a, b) =>
-                        parseFloat(b.totalNumber) - parseFloat(a.totalNumber)
-                    )}
-                />{' '}
+                  cards={categoryCardsDescending('gaming')}
+                />
               </CardContainer>
             </React.Fragment>
           )}
@@ -241,12 +243,7 @@ function App() {
               <CardContainer>
                 <CardsRender
                   bookmarkToggle={bookmarkToggle}
-                  cards={cards
-                    .filter(card => card.category === 'editing')
-                    .sort(
-                      (a, b) =>
-                        parseFloat(b.totalNumber) - parseFloat(a.totalNumber)
-                    )}
+                  cards={categoryCardsDescending('editing')}
                 />
               </CardContainer>
             </React.Fragment>
@@ -260,12 +257,7 @@ function App() {
               <CardContainer>
                 <CardsRender
                   bookmarkToggle={bookmarkToggle}
-                  cards={cards
-                    .filter(card => card.category === 'office')
-                    .sort(
-                      (a, b) =>
-                        parseFloat(b.totalNumber) - parseFloat(a.totalNumber)
-                    )}
+                  cards={categoryCardsDescending('office')}
                 />
               </CardContainer>
             </React.Fragment>
