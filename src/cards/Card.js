@@ -113,9 +113,7 @@ const SwipeIndicatorContainer = styled.div`
 
 const PcBuildImageContainer = styled.div`
   display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  justify-content: center;
-  align-items: center;
+  grid-template-columns: 1fr 185px 1fr;
   height: 200px;
   margin-top: 10px;
 `
@@ -128,9 +126,15 @@ const CpuGpuLogoContainer = styled.div`
 `
 
 const CpuGpu = styled.img`
-  max-width: 45px;
-  max-height: 45px;
+  max-width: 40px;
+  max-height: 40px;
   margin: 8px;
+`
+
+const PcBuildImageAlign = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `
 
 const PcBuildImage = styled.img`
@@ -138,7 +142,8 @@ const PcBuildImage = styled.img`
 `
 
 const KeyFacts = styled.section`
-  line-height: 1.7;
+  padding-top: 5px;
+  line-height: 1.6;
 `
 
 const PartListTitleGrid = styled.div`
@@ -330,7 +335,9 @@ export default function Card({
                 ''
               )}
             </CpuGpuLogoContainer>
-            <PcBuildImage src={image} />
+            <PcBuildImageAlign>
+              <PcBuildImage src={image} />
+            </PcBuildImageAlign>
           </PcBuildImageContainer>
           <KeyFacts>{keyFacts}</KeyFacts>
         </SwipeContainer>
