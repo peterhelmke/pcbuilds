@@ -12,6 +12,36 @@ const StyledFooter = styled.nav`
   user-select: none;
 `
 
+const FooterNavBookmark = styled(NavLink)`
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 32px;
+  background: rgba(192, 192, 192, 0.12);
+  transition: all 0.3s ease-in;
+  :hover  {
+    color: white;
+  }
+  &.active {
+    background: transparent;
+    color: white;
+  }
+`
+
+const BookmarkCounter = styled.div`
+  display: flex;
+  font-size: 11px;
+  bottom: 34%;
+  z-index: 1;
+  position: absolute;
+  color: #f1f1f1;
+
+  text-shadow: 1px 1px 1px #330086, 1px -1px 1px #330086, -1px 1px 1px #330086,
+    -1px -1px 1px #330086;
+`
+
 const FooterSortLink = styled(NavLink)`
   display: flex;
   justify-content: center;
@@ -29,24 +59,7 @@ const FooterSortLink = styled(NavLink)`
   }
 `
 
-const FooterNavBookmark = styled(NavLink)`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: rgba(255, 255, 255, 0.5);
-  font-size: 29px;
-  background: rgba(192, 192, 192, 0.12);
-  transition: all 0.3s ease-in;
-  :hover  {
-    color: white;
-  }
-  &.active {
-    background: transparent;
-    color: white;
-  }
-`
-
-export default function Footer() {
+export default function Footer({ countBookmarked }) {
   return (
     <StyledFooter>
       <FooterNavBookmark
@@ -62,7 +75,9 @@ export default function Footer() {
         ) : (
           <TiStarOutline />
         )}
+        <BookmarkCounter>{countBookmarked()}</BookmarkCounter>
       </FooterNavBookmark>
+
       <FooterSortLink
         to={
           window.location.pathname === '/'

@@ -66,6 +66,11 @@ function App() {
     ])
   }
 
+  function countBookmarked() {
+    const bookmarkedCards = cards.filter(card => card.bookmarked === true)
+    return bookmarkedCards.length
+  }
+
   function filterCardsCategory(category) {
     return cards.filter(card => card.category === category)
   }
@@ -315,7 +320,7 @@ function App() {
             </React.Fragment>
           )}
         />
-        <Footer />
+        <Footer countBookmarked={countBookmarked} />
         <GlobalStyle />
       </PageGrid>
     </Router>
