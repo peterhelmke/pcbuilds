@@ -29,8 +29,8 @@ function App() {
     saveCardsToStorage(cards)
   }, [cards])
 
-  function calcTotal() {
-    const cardsTotal = cards.map(card =>
+  function calcTotalString() {
+    const cardsTotalString = cards.map(card =>
       Object.assign(card, {
         total: card.parts
           .reduce((a, b) => a + b.partPrice, 0)
@@ -40,11 +40,20 @@ function App() {
           }),
       })
     )
-    setCards(cardsTotal)
+    setCards(cardsTotalString)
+  }
+
+  function calcTotalNumber() {
+    cards.map(card =>
+      Object.assign(card, {
+        totalNumber: card.parts.reduce((a, b) => a + b.partPrice, 0),
+      })
+    )
   }
 
   useEffect(() => {
-    calcTotal()
+    calcTotalString()
+    calcTotalNumber()
   }, [])
 
   function bookmarkToggle(title) {
@@ -55,6 +64,34 @@ function App() {
       { ...card, bookmarked: !card.bookmarked },
       ...cards.slice(index + 1),
     ])
+  }
+
+  function filterCardsCategory(category) {
+    return cards.filter(card => card.category === category)
+  }
+
+  function allCardsAscending() {
+    return cards.sort(
+      (a, b) => parseFloat(a.totalNumber) - parseFloat(b.totalNumber)
+    )
+  }
+
+  function categoryCardsAscending(category) {
+    return cards
+      .filter(card => card.category === category)
+      .sort((a, b) => parseFloat(a.totalNumber) - parseFloat(b.totalNumber))
+  }
+
+  function allCardsDescending() {
+    return cards.sort(
+      (a, b) => parseFloat(b.totalNumber) - parseFloat(a.totalNumber)
+    )
+  }
+
+  function categoryCardsDescending(category) {
+    return cards
+      .filter(card => card.category === category)
+      .sort((a, b) => parseFloat(b.totalNumber) - parseFloat(a.totalNumber))
   }
 
   return (
@@ -80,7 +117,7 @@ function App() {
               <CardContainer>
                 <CardsRender
                   bookmarkToggle={bookmarkToggle}
-                  cards={cards.filter(card => card.category === 'gaming')}
+                  cards={filterCardsCategory('gaming')}
                 />
               </CardContainer>
             </React.Fragment>
@@ -94,7 +131,7 @@ function App() {
               <CardContainer>
                 <CardsRender
                   bookmarkToggle={bookmarkToggle}
-                  cards={cards.filter(card => card.category === 'editing')}
+                  cards={filterCardsCategory('editing')}
                 />
               </CardContainer>
             </React.Fragment>
@@ -108,7 +145,7 @@ function App() {
               <CardContainer>
                 <CardsRender
                   bookmarkToggle={bookmarkToggle}
-                  cards={cards.filter(card => card.category === 'office')}
+                  cards={filterCardsCategory('office')}
                 />
               </CardContainer>
             </React.Fragment>
@@ -122,9 +159,7 @@ function App() {
               <CardContainer>
                 <CardsRender
                   bookmarkToggle={bookmarkToggle}
-                  cards={cards.sort(
-                    (a, b) => parseFloat(a.total) - parseFloat(b.total)
-                  )}
+                  cards={allCardsAscending()}
                 />
               </CardContainer>
             </React.Fragment>
@@ -138,9 +173,7 @@ function App() {
               <CardContainer>
                 <CardsRender
                   bookmarkToggle={bookmarkToggle}
-                  cards={cards
-                    .filter(card => card.category === 'gaming')
-                    .sort((a, b) => parseFloat(a.total) - parseFloat(b.total))}
+                  cards={categoryCardsAscending('gaming')}
                 />
               </CardContainer>
             </React.Fragment>
@@ -154,9 +187,7 @@ function App() {
               <CardContainer>
                 <CardsRender
                   bookmarkToggle={bookmarkToggle}
-                  cards={cards
-                    .filter(card => card.category === 'editing')
-                    .sort((a, b) => parseFloat(a.total) - parseFloat(b.total))}
+                  cards={categoryCardsAscending('editing')}
                 />
               </CardContainer>
             </React.Fragment>
@@ -170,9 +201,7 @@ function App() {
               <CardContainer>
                 <CardsRender
                   bookmarkToggle={bookmarkToggle}
-                  cards={cards
-                    .filter(card => card.category === 'office')
-                    .sort((a, b) => parseFloat(a.total) - parseFloat(b.total))}
+                  cards={categoryCardsAscending('office')}
                 />
               </CardContainer>
             </React.Fragment>
@@ -186,9 +215,7 @@ function App() {
               <CardContainer>
                 <CardsRender
                   bookmarkToggle={bookmarkToggle}
-                  cards={cards.sort(
-                    (a, b) => parseFloat(b.total) - parseFloat(a.total)
-                  )}
+                  cards={allCardsDescending()}
                 />
               </CardContainer>
             </React.Fragment>
@@ -202,10 +229,8 @@ function App() {
               <CardContainer>
                 <CardsRender
                   bookmarkToggle={bookmarkToggle}
-                  cards={cards
-                    .filter(card => card.category === 'gaming')
-                    .sort((a, b) => parseFloat(b.total) - parseFloat(a.total))}
-                />{' '}
+                  cards={categoryCardsDescending('gaming')}
+                />
               </CardContainer>
             </React.Fragment>
           )}
@@ -218,9 +243,7 @@ function App() {
               <CardContainer>
                 <CardsRender
                   bookmarkToggle={bookmarkToggle}
-                  cards={cards
-                    .filter(card => card.category === 'editing')
-                    .sort((a, b) => parseFloat(b.total) - parseFloat(a.total))}
+                  cards={categoryCardsDescending('editing')}
                 />
               </CardContainer>
             </React.Fragment>
@@ -234,9 +257,7 @@ function App() {
               <CardContainer>
                 <CardsRender
                   bookmarkToggle={bookmarkToggle}
-                  cards={cards
-                    .filter(card => card.category === 'office')
-                    .sort((a, b) => parseFloat(b.total) - parseFloat(a.total))}
+                  cards={categoryCardsDescending('office')}
                 />
               </CardContainer>
             </React.Fragment>
