@@ -1,10 +1,29 @@
 import Card from './Card'
 import React from 'react'
 import { uid } from 'react-uid'
+import styled from 'styled-components'
+import { TiStarOutline } from 'react-icons/ti'
+
+const BookmarksPlaceholder = styled.div`
+  display: flex;
+  margin-top: 20px;
+  font-size: 18px;
+  color: #afafaf;
+  align-items: center;
+  justify-content: center;
+  padding: 1px;
+`
 
 export default function CardsRender({ cards, bookmarkToggle }) {
   return (
     <React.Fragment>
+      {window.location.pathname.includes('bookmarks') ? (
+        <BookmarksPlaceholder>
+          Space for your favourite Builds <TiStarOutline />
+        </BookmarksPlaceholder>
+      ) : (
+        ''
+      )}
       {cards.map(card => (
         <Card
           key={uid(card)}
