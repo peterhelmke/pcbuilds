@@ -68,7 +68,7 @@ function App() {
 
   function countBookmarked() {
     const bookmarkedCards = cards.filter(card => card.bookmarked === true)
-    return bookmarkedCards.length
+    return bookmarkedCards.length === 0 ? '' : bookmarkedCards.length
   }
 
   function filterCardsCategory(category) {

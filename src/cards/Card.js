@@ -18,7 +18,7 @@ const StyledCard = styled.section`
   background: linear-gradient(to bottom, #ffffff, #ffffff, #fafafa);
   min-width: 280px;
   height: 510px;
-  border-bottom: solid 1px #f1f1f1;
+  border-bottom: solid 1px #e1e1e1;
   border-radius: 0 0 25px 25px;
   scroll-snap-align: start;
 `
@@ -74,7 +74,7 @@ const PcBuildSubtitleContainer = styled.div`
 
 const CategoryTag = styled(NavLink)`
   display: flex;
-  height: 27px;
+  height: 25px;
   padding: 5px;
   justify-content: center;
   align-items: center;
@@ -93,7 +93,7 @@ const CategoryTag = styled(NavLink)`
 
 const PcBuildSubtitle = styled.h3`
   margin: 0;
-  margin-left: 5px;
+  margin-left: 8px;
   font-size: 16px;
   font-weight: lighter;
 `
@@ -126,8 +126,8 @@ const CpuGpuLogoContainer = styled.div`
 `
 
 const CpuGpu = styled.img`
-  max-width: 40px;
-  max-height: 40px;
+  max-width: 38px;
+  max-height: 38px;
   margin: 8px;
 `
 
@@ -142,8 +142,9 @@ const PcBuildImage = styled.img`
 `
 
 const KeyFacts = styled.section`
-  padding-top: 5px;
-  line-height: 1.6;
+  padding-top: 10px;
+  line-height: 1.5;
+  font-size: 16px;
 `
 
 const PartListTitleGrid = styled.div`
@@ -237,6 +238,7 @@ const SwipeContainer = styled.div`
 
 Card.propTypes = {
   title: PropTypes.string,
+  performance: PropTypes.number,
   subtitle: PropTypes.string,
   keyFacts: PropTypes.string,
   image: PropTypes.string,
@@ -244,6 +246,7 @@ Card.propTypes = {
   category: PropTypes.string,
   bookmarked: PropTypes.bool,
   onBookmark: PropTypes.func,
+  total: PropTypes.string,
 }
 
 Card.defaultProps = {
