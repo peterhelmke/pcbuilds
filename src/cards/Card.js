@@ -311,7 +311,7 @@ export default function Card({
                   ? '/office'
                   : '/'
               }>
-              {category}{' '}
+              {category}
             </CategoryTag>
             <PcBuildSubtitle>{subtitle}</PcBuildSubtitle>
             <SwipeIndicatorContainer

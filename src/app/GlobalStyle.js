@@ -6,7 +6,7 @@ export default createGlobalStyle`
   }
 
   body {
-    font-family: 'Roboto Condensed', sans-serif;
+    font-family: 'Roboto', sans-serif;
     color: #222222;
     margin: 0;
     width: 100%;
