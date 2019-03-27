@@ -204,7 +204,6 @@ export default function PcBuildsData() {
         },
       ],
     },
-
     {
       title: 'Great Workstation',
       performance: 8,
@@ -280,7 +279,6 @@ export default function PcBuildsData() {
         },
       ],
     },
-
     {
       title: 'Step up your Office game',
       performance: 2,
@@ -410,7 +408,6 @@ export default function PcBuildsData() {
         },
       ],
     },
-
     {
       title: 'Budget Gaming',
       performance: 4,
