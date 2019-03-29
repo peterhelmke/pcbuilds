@@ -56,7 +56,7 @@ function App() {
   }, [])
 
   function bookmarkToggle(title) {
-    const card = cards.find(pcbuild => pcbuild.title === title)
+    const card = cards.find(card => card.title === title)
     const index = cards.indexOf(card)
     setCards([
       ...cards.slice(0, index),
