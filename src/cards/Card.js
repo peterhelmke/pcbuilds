@@ -76,7 +76,7 @@ export default function Card({
     <StyledCard>
       <PcBuildTitleContainer>
         <PcBuildTitle> {title} </PcBuildTitle>
-        <Tippy distance="5" content="Performance">
+        <Tippy arrow={true} distance="5" content="Performance">
           <PerformanceIndicator
             style={
               performance >= 9
