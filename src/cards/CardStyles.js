@@ -42,6 +42,7 @@ export const PerformanceIndicator = styled.div`
   align-items: center;
   color: #330086;
   margin-right: 10px;
+  user-select: none;
 `
 
 export const BookmarkStarContainer = styled.div`
