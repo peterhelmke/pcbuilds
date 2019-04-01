@@ -36,6 +36,7 @@ import {
   PcBuildTotal,
   SwipeContainer,
 } from './CardStyles'
+import ReactTooltip from 'react-tooltip'
 
 Card.propTypes = {
   title: PropTypes.string,
@@ -75,22 +76,26 @@ export default function Card({
     <StyledCard>
       <PcBuildTitleContainer>
         <PcBuildTitle> {title} </PcBuildTitle>
-        <PerformanceIndicator
-          style={
-            performance >= 9
-              ? { color: '#330086' }
-              : performance >= 8
-              ? { opacity: 0.8 }
-              : performance >= 6
-              ? { opacity: 0.7 }
-              : performance >= 4
-              ? { opacity: 0.6 }
-              : { opacity: 0.4 }
-          }>
-          <FaRocket />
-          &nbsp;
-          <strong> {performance} </strong>
-        </PerformanceIndicator>
+        <span data-tip="Performance">
+          <PerformanceIndicator
+            style={
+              performance >= 9
+                ? { color: '#330086' }
+                : performance >= 8
+                ? { opacity: 0.8 }
+                : performance >= 6
+                ? { opacity: 0.7 }
+                : performance >= 4
+                ? { opacity: 0.6 }
+                : { opacity: 0.4 }
+            }>
+            <FaRocket />
+            &nbsp;
+            <strong> {performance} </strong>
+            <ReactTooltip effect="solid" />
+          </PerformanceIndicator>{' '}
+        </span>
+
         <BookmarkStarContainer onClick={() => onBookmark(title)}>
           {bookmarked ? (
             <TiStarFullOutline style={{ color: '#6d36c6' }} />
