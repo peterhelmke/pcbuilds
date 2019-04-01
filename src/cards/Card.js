@@ -36,7 +36,7 @@ import {
   PcBuildTotal,
   SwipeContainer,
 } from './CardStyles'
-import ReactTooltip from 'react-tooltip'
+import Tippy from '@tippy.js/react'
 
 Card.propTypes = {
   title: PropTypes.string,
@@ -76,7 +76,7 @@ export default function Card({
     <StyledCard>
       <PcBuildTitleContainer>
         <PcBuildTitle> {title} </PcBuildTitle>
-        <span data-tip="Performance">
+        <Tippy distance="5" content="Performance">
           <PerformanceIndicator
             style={
               performance >= 9
@@ -92,10 +92,8 @@ export default function Card({
             <FaRocket />
             &nbsp;
             <strong> {performance} </strong>
-            <ReactTooltip effect="solid" />
-          </PerformanceIndicator>{' '}
-        </span>
-
+          </PerformanceIndicator>
+        </Tippy>
         <BookmarkStarContainer onClick={() => onBookmark(title)}>
           {bookmarked ? (
             <TiStarFullOutline style={{ color: '#6d36c6' }} />
