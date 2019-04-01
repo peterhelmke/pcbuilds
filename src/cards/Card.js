@@ -92,7 +92,7 @@ export default function Card({
             <FaRocket />
             &nbsp;
             <strong> {performance} </strong>
-            <ReactTooltip effect="solid" event="touch" />
+            <ReactTooltip effect="solid" />
           </PerformanceIndicator>{' '}
         </span>
 
