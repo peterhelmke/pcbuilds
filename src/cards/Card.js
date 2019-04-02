@@ -76,12 +76,7 @@ export default function Card({
     <StyledCard>
       <PcBuildTitleContainer>
         <PcBuildTitle> {title} </PcBuildTitle>
-        <Tippy
-          placement="left-start"
-          touchHold={true}
-          arrow={true}
-          distance="5"
-          content="Performance">
+        <Tippy touchHold={true} arrow={true} distance="5" content="Performance">
           <PerformanceIndicator
             style={
               performance >= 9
