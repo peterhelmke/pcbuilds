@@ -6,10 +6,10 @@ import { TiStarOutline } from 'react-icons/ti'
 
 const BookmarksPlaceholder = styled.div`
   display: flex;
+  width: 100%;
   margin-top: 20px;
   font-size: 18px;
   color: #afafaf;
-  align-items: center;
   justify-content: center;
 `
 
