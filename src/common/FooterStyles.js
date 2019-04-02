@@ -2,11 +2,17 @@ import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
 
 export const StyledFooter = styled.footer`
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  height: 50px;
   background: linear-gradient(to right, #11002c, #330086);
   user-select: none;
+  width: 100%;
+`
+
+export const StyledFooterGrid = styled.div`
+  margin: auto;
+  display: grid;
+  max-width: 810px;
+  grid-template-columns: repeat(3, 1fr);
+  height: 50px;
 `
 
 export const FooterNavBookmark = styled(NavLink)`

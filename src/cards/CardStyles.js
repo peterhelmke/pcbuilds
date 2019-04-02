@@ -2,13 +2,16 @@ import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
 
 export const StyledCard = styled.section`
-  padding: 25px;
   background: linear-gradient(to bottom, #ffffff, #ffffff, #fafafa);
-  min-width: 280px;
+  max-width: 375px;
   height: 510px;
   border-bottom: solid 1px #e1e1e1;
   border-radius: 0 0 25px 25px;
   scroll-snap-align: start;
+  padding: 25px;
+  @media only screen and (max-width: 350px) {
+    padding: 25px 5px 25px 5px;
+  }
 `
 
 export const PcBuildTitleContainer = styled.div`
@@ -26,6 +29,10 @@ export const PcBuildTitleContainer = styled.div`
   );
   border-radius: 0 0 25px 25px;
   z-index: 1;
+  @media only screen and (max-width: 350px) {
+    padding: 25px 5px 5px 5px;
+    margin: -25px -5px 0 -5px;
+  }
 `
 
 export const PcBuildTitle = styled.h2`

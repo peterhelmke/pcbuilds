@@ -2,11 +2,16 @@ import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
 
 export const StyledHeader = styled.header`
-  overflow-y: hidden;
-  display: grid;
-  grid-template-rows: 50px 50px;
+  width: 100%;
   background: linear-gradient(to right, #11002c, #330086);
   user-select: none;
+`
+
+export const StyledHeaderGrid = styled.div`
+  margin: auto;
+  max-width: 810px;
+  display: grid;
+  grid-template-rows: 50px 50px;
 `
 
 export const HeaderTitleContainer = styled.div`

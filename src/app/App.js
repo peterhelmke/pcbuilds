@@ -9,11 +9,6 @@ import Footer from '../common/Footer'
 import { getCardsFromStorage, saveCardsToStorage } from '../services'
 
 const PageGrid = styled.div`
-  max-width: 1025px;
-  margin-left: auto;
-  margin-right: auto;
-  left: 0;
-  right: 0;
   display: grid;
   grid-template-rows: 100px auto 50px;
   position: absolute;
